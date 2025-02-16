@@ -3,12 +3,15 @@ import { useEffect, useRef, useState } from "react";
 //import '../../Styles/commonStyles.css'; // Importa estilos comunes
 import '../Register/Register.css'; // Importa estilos específicos
 import { Link } from 'react-router-dom'; // Importa Link
-import { login } from '../../services/api';
 import { register } from '../../services/api';
 import {getCountries} from'../../services/api';
-const Registro = () => {
-  const inputUserNameRef = useRef();
-  const inputPassRef = useRef();
+import Alert from "../UI/Alert/Alert"; // Importa componente Alert
+
+
+const Register = () => {
+
+  const inputUsernameRef = useRef();
+  const inputPasswordRef = useRef();
   const inputCountryRef = useRef();
 
 
@@ -16,6 +19,7 @@ const Registro = () => {
   const [btnText, setBtnText] = useState("Registrar usuario");
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage]= useState("");
+  const [classMessage, setClassMessage] = useState('');
 
   const [countries, setCountries] = useState([]);
 
@@ -36,15 +40,16 @@ const Registro = () => {
       setBtnDisabled(true);
       setBtnText("Enviando datos....");
       const response = await register(
-        inputUserNameRef.current.value,
-        inputPassRef.current.value,
+        inputUsernameRef.current.value,
+        inputPasswordRef.current.value,
         inputCountryRef.current.value
       );
-
+      setClassMessage("alert-success");
       setAlertMessage("Inicio de sesion correcto");
       setShowAlert(true);
 
     } catch(error){
+      setClassMessage("alert-danger");
       setAlertMessage(error);
       setShowAlert(true);
     }finally{
@@ -55,8 +60,8 @@ const Registro = () => {
 
   const _onHandleChange = () => {
     if (
-      inputUserNameRef.current.value.length > 0 &&
-      inputPassRef.current.value.length > 0
+      inputUsernameRef.current.value.length > 0 &&
+      inputPasswordRef.current.value.length > 0
     ) {
       setBtnDisabled(false);
     } else {
@@ -70,13 +75,18 @@ const Registro = () => {
       <div>
         <h2>Regístrate</h2>
         <form>
+        {showAlert ? (
+          <Alert classColor={classMessage} message={alertMessage} />
+        ) : (
+          ""
+        )}
           <div className="form-group">
             <label htmlFor="nombreUsuario">Usuario:</label>
             <input type="text" 
             id="nombreUsuarioRegis" 
             className="from-control"
             placeholder='Juan Perez'
-            ref={inputUserNameRef}
+            ref={inputUsernameRef}
             onChange={_onHandleChange}
              required 
             />
@@ -86,7 +96,7 @@ const Registro = () => {
             <input type="password" 
             id="passwordRegis" 
             className="password" 
-            ref={inputPassRef}
+            ref={inputPasswordRef}
             onChange={_onHandleChange}
             required />
           </div>
@@ -106,7 +116,14 @@ const Registro = () => {
             </select>
           </div>
           <div className="form-group">
-            <button type="submit">Crear Cuenta</button>
+          <button
+          type="submit"
+          className={`btn btn-primary btn-block`}
+          onClick={_onHandleClick}
+          disabled={btnDisabled}
+        >
+          {btnText}
+        </button>
           </div>
         </form>
         <div className="registro-link">
@@ -117,4 +134,4 @@ const Registro = () => {
   );
 };
 
-export default Registro;
+export default Register;

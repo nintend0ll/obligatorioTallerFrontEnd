@@ -1,4 +1,4 @@
-const BASE_URL = "https://movetrack.develotion.com";
+const BASE_URL = "https://movetrack.develotion.com/";
 
 const login = async (username, password) => {
     try {
@@ -12,7 +12,8 @@ const login = async (username, password) => {
                 password: password,
             }),
         });
-        if (response.codigo === 200) {
+        if (response.status === 200) {
+            console.log(response);
             return response.json();
         }else{
             return Promise.reject("No se pudo iniciar sesion");
@@ -22,7 +23,7 @@ const login = async (username, password) => {
     }
 };
 
-const register= async(username, password, country) =>{
+const register = async(username, password, country) =>{
     try{
         const response = await fetch(`${BASE_URL}/usuarios.php`,
         {
@@ -33,10 +34,11 @@ const register= async(username, password, country) =>{
             body: JSON.stringify({
                 usuario:username,
                 password:password,
-                country:country
+                idPais:country
             }),
         });
-        if(response.codigo===200){
+        if(response.status===200){
+            console.log(response);
             return response.json();
         }else{
             return Promise.reject("Ha ocurrido un error");
