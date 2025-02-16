@@ -1,18 +1,42 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { Router, Routes, Route, useNavigate } from 'react-router-dom';
 import Login from './components/Login/login';
+import {useEffect, useState} from "react"; 
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register'; // Importa el componente Register
 
 function App() {
+
+  const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
+
+  useEffect(() => {
+    const localData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
+    setUserData(localData);
+  }, []);
+
+  const _onLogin = (loginData) => { 
+    setUserData(loginData);
+    localStorage.setItem("userData", JSON.stringify(loginData));
+  };
+  
+  const _onLogout = () =>{
+    localStorage.removeItem("userData");
+    setUserData("null");
+  };
+  
   return (
-    <div>
+    <div className='App'>
       <Routes>
         {/* Redirige la ruta principal ("/") al Login */}
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Login onLogin={_onLogin} />} />
         {/* Ruta para el Login */}
-        <Route path="/login" element={<Login />} />
+        <Route path="/login" element={<Login onLogin={_onLogin} userData={userData} />} />
         {/* Ruta para el Registro */}
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={
+          <PrivateRoute userData={userData} onLogout={_onLogout}>
+          </PrivateRoute>
+        } />
       </Routes>
     </div>
   );
