@@ -12,7 +12,7 @@ const login = async (username, password) => {
                 password: password,
             }),
         });
-        if (response.status == 200) {
+        if (response.codigo === 200) {
             return response.json();
         }else{
             return Promise.reject("No se pudo iniciar sesion");
