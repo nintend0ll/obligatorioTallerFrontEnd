@@ -1,4 +1,5 @@
 import Button from "../../UI/Button/Button";
+import "./Header.css";
 
 const Header = ({onLogout}) => {
     return (

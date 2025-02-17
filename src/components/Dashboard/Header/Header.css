@@ -1,0 +1,33 @@
+/* Estilos generales para el Header */
+.header {
+    background-color: #f8bbd0; /* Tono rosado claro */
+    padding: 1rem 2rem; /* Espaciado interno */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    margin-bottom: 20px; /* Margen inferior */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  /* Estilos para el título del Header */
+  .header h1 {
+    color: #e91e63; /* Tono rosado oscuro */
+    margin: 0; /* Elimina el margen por defecto */
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  /* Estilos para botones en el Header (si los hay) */
+.header .btn {
+    background-color: #e91e63; /* Tono rosado oscuro */
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .header .btn:hover {
+    background-color: #c2185b; /* Tono rosado más oscuro al pasar el mouse */
+  }

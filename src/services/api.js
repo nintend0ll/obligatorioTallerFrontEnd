@@ -67,9 +67,9 @@ const getCountries = async () => {
     }
 }
 
-const getRegistros = async (iduser) => { 
+const getRegistros = async (id) => { 
     try {
-        const response = await fetch (`${BASE_URL}registros.php?idUsuario=${iduser}`); 
+        const response = await fetch (`${BASE_URL}/registros.php?idUsuario=${id}`); 
         if(response.status === 200) {
             return response.json();
         } else {

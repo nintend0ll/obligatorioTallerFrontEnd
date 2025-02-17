@@ -4,6 +4,7 @@ import Login from './components/Login/Login';
 import {useEffect, useState} from "react"; 
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register'; // Importa el componente Register
+import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
 
@@ -34,7 +35,8 @@ function App() {
         {/* Ruta para el Registro */}
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={
-          <PrivateRoute userData={userData} onLogout={_onLogout}>
+          <PrivateRoute userData={userData}>
+              <Dashboard userData={userData} onLogout={_onLogout} />
           </PrivateRoute>
         } />
       </Routes>
