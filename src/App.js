@@ -1,6 +1,6 @@
 import React from 'react';
-import { Router, Routes, Route, useNavigate } from 'react-router-dom';
-import Login from './components/Login/login';
+import { Routes, Route, useNavigate } from 'react-router-dom';
+import Login from './components/Login/Login';
 import {useEffect, useState} from "react"; 
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import Register from './components/Register/Register'; // Importa el componente Register

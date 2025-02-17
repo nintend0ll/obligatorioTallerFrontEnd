@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'; // Importa Link
 import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
-import "./login.css";
+import "./Login.css";
 import {useNavigate} from 'react-router-dom'; // Importa useNavigate
 import { login } from "../../services/api";
 import Alert from "../UI/Alert/Alert";

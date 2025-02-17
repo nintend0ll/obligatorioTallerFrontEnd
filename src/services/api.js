@@ -67,4 +67,18 @@ const getCountries = async () => {
     }
 }
 
-export {login, register, getCountries};
+const getRegistros = async (iduser) => { 
+    try {
+        const response = await fetch (`${BASE_URL}registros.php?idUsuario=${iduser}`); 
+        if(response.status === 200) {
+            return response.json();
+        } else {
+            return Promise.reject("Ha ocurrido un error");
+        }
+    } catch (error) {
+        return Promise.reject("Ha ocurrido un error: "+ error);
+    }
+}
+
+
+export {login, register, getCountries, getRegistros};
