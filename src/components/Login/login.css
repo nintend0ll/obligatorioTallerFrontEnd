@@ -1,0 +1,128 @@
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f9e4e4; /* Fondo rosado claro */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+  }
+  
+  h2 {
+    color: #e91e63; /* Tono rosado oscuro para el título */
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Estilos para los grupos de formulario */
+  .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #e91e63; /* Tono rosado oscuro para las etiquetas */
+    font-weight: bold;
+  }
+  
+  /* Estilos para los inputs */
+  .input-group {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e91e63; /* Borde rosado */
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  
+  .input-group-prepend,
+  .input-group-append {
+    background-color: #f8bbd0; /* Tono rosado claro para los íconos */
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .input-group-text {
+    color: #e91e63; /* Tono rosado oscuro para los íconos */
+  }
+  
+  .form-control {
+    flex: 1;
+    border: none;
+    padding: 0.5rem;
+    font-size: 1rem;
+    outline: none;
+  }
+
+  .btn-primary {
+  background-color: #e91e63; /* Tono rosado oscuro para el botón */
+  border: none;
+  padding: 0.75rem;
+  font-size: 1rem;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #c2185b; /* Tono rosado más oscuro al pasar el mouse */
+}
+
+.btn-primary:disabled {
+  background-color: #f8bbd0; /* Tono rosado claro cuando está deshabilitado */
+  cursor: not-allowed;
+}
+
+.btn-primary {
+    background-color: #e91e63; /* Tono rosado oscuro para el botón */
+    border: none;
+    padding: 0.75rem;
+    font-size: 1rem;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s ease;
+  }
+  
+  .btn-primary:hover {
+    background-color: #c2185b; /* Tono rosado más oscuro al pasar el mouse */
+  }
+  
+  .btn-primary:disabled {
+    background-color: #f8bbd0; /* Tono rosado claro cuando está deshabilitado */
+    cursor: not-allowed;
+  }
+
+/* Estilos para el enlace de registro */
+.registro-link {
+    margin-top: 1rem;
+    color: #e91e63; /* Tono rosado oscuro para el texto */
+  }
+  
+  .registro-link a {
+    color: #c2185b; /* Tono rosado más oscuro para el enlace */
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .registro-link a:hover {
+    text-decoration: underline;
+  }
+  
+

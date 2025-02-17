@@ -1,7 +1,6 @@
 import React from 'react';
 import { useEffect, useRef, useState } from "react";
-//import '../../Styles/commonStyles.css'; // Importa estilos comunes
-import '../Register/Register.css'; // Importa estilos específicos
+import '../Register/Register.css'; 
 import { Link } from 'react-router-dom'; // Importa Link
 import { register } from '../../services/api';
 import {getCountries} from'../../services/api';
@@ -81,33 +80,34 @@ const Register = () => {
           ""
         )}
           <div className="form-group">
-            <label htmlFor="nombreUsuario">Usuario:</label>
+            <label htmlFor="nombreUsuario">Usuario</label>
             <input type="text" 
             id="nombreUsuarioRegis" 
             className="from-control"
-            placeholder='Juan Perez'
+            placeholder='usuario'
             ref={inputUsernameRef}
             onChange={_onHandleChange}
              required 
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Contraseña:</label>
+            <label htmlFor="password">Password</label>
             <input type="password" 
             id="passwordRegis" 
             className="password" 
+            placeholder='password'
             ref={inputPasswordRef}
             onChange={_onHandleChange}
             required />
           </div>
           <div className="form-group">
-            <label htmlFor="pais">Pais de residencia:</label>
+            <label htmlFor="pais">Pais de residencia</label>
             <select id="paises" 
             className="pais" 
             ref={inputCountryRef}
             onChange={_onHandleChange}
             required>
-            <option value="">Selecciona un pais</option>
+            <option value="">Seleccionar pais</option>
             {countries.map((country)=>(
               <option key = {country.id} value={country.id}>
                 {country.name}

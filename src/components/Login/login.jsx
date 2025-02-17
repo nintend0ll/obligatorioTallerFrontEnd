@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'; // Importa Link
 import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
-//import '../../Styles/commonStyles.css'; // Importa estilos comunes
+import "./login.css";
 import {useNavigate} from 'react-router-dom'; // Importa useNavigate
 import { login } from "../../services/api";
 import Alert from "../UI/Alert/Alert";
@@ -72,18 +72,13 @@ const Login =({onLogin, userData}) =>{
           ""
         )}
         <div className="form-group">
-          <label htmlFor="email">Username</label>
+          <label htmlFor="usuario">Usuario</label>
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="fas fa-envelope"></i>
-              </span>
-            </div>
+            
             <input
-              type="email"
               className="form-control"
-              id="email"
-              placeholder="email@address.com"
+              id="usuario"
+              placeholder="usuario"
               ref={inputUsernameRef}
               onChange={_onHandleChange}
             />
@@ -92,24 +87,16 @@ const Login =({onLogin, userData}) =>{
         <div className="form-group">
           <label htmlFor="password">Password</label>
           <div className="input-group">
-            <div className="input-group-prepend">
-              <span className="input-group-text">
-                <i className="fas fa-lock"></i>
-              </span>
-            </div>
+            
             <input
               type="password"
               className="form-control"
               id="password"
-              placeholder="Password"
+              placeholder="password"
               ref={inputPasswordRef}
               onChange={_onHandleChange}
             />
-            <div className="input-group-append">
-              <span className="input-group-text">
-                <i className="fas fa-eye"></i>
-              </span>
-            </div>
+           
           </div>
         </div>
         <button
@@ -120,17 +107,12 @@ const Login =({onLogin, userData}) =>{
         >
           {btnText}
         </button>
-        <div className="form-group form-check mt-3">
-          <input type="checkbox" className="form-check-input" id="rememberMe" />
-          <label className="form-check-label" htmlFor="rememberMe">
-            Remember me
-          </label>
-        </div>
+
       </form>
           {/* Enlace para mostrar el registro */}
           <div className="registro-link">
-             <p>¿No tienes una cuenta? 
-                <Link to="/Register" id="mostrarRegistro">Regístrate aquí</Link></p>
+             <p>¿No tienes una cuenta?  
+                <Link to="/Register" id="mostrarRegistro"> Regístrate aquí</Link></p>
             </div>
         </div>
       </div>
