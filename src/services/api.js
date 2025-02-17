@@ -1,19 +1,31 @@
 const BASE_URL = "https://movetrack.develotion.com/";
 
+const getUserData = () => {
+    const userData = localStorage.getItem("userData");
+    return userData ? JSON.parse(userData) : null;
+};
+
+const HEADERS = () => {
+    const userData = getUserData();
+    return {
+        "Content-Type": "application/json",
+        "apikey": userData?.apiKey || "",
+        "iduser": userData?.id || ""
+    };
+};
+
 const login = async (username, password) => {
     try {
         const response = await fetch(`${BASE_URL}/login.php`, {
             method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
+            headers: HEADERS(),
             body: JSON.stringify({
                 usuario: username,
                 password: password,
             }),
         });
         if (response.status === 200) {
-            console.log(response);
+            
             return response.json();
         }else{
             return Promise.reject("No se pudo iniciar sesion");
@@ -23,14 +35,13 @@ const login = async (username, password) => {
     }
 };
 
+
 const register = async(username, password, country) =>{
     try{
         const response = await fetch(`${BASE_URL}/usuarios.php`,
         {
             method:"POST",
-            headers:{
-                "content-type":"application/json",
-            },
+            headers: HEADERS(),
             body: JSON.stringify({
                 usuario:username,
                 password:password,
@@ -38,7 +49,7 @@ const register = async(username, password, country) =>{
             }),
         });
         if(response.status===200){
-            console.log(response);
+            
             return response.json();
         }else{
             return Promise.reject("Ha ocurrido un error");
@@ -52,9 +63,7 @@ const getCountries = async () => {
     try {
         const response = await fetch(`${BASE_URL}/paises.php`, {
             method: "GET",
-            headers: {
-                "Content-type": "application/json"
-            }
+            headers: HEADERS(),
         });
         const data = await response.json(); // Espera a que la promesa se resuelva
         if (data.codigo === 200) {
@@ -67,18 +76,22 @@ const getCountries = async () => {
     }
 }
 
-const getRegistros = async (id) => { 
+const getRegistros = async (iduser) => {
     try {
-        const response = await fetch (`${BASE_URL}/registros.php?idUsuario=${id}`); 
-        if(response.status === 200) {
+        const response = await fetch(`${BASE_URL}/registros.php?idUsuario=${iduser}`, {
+            method: "GET",
+            headers: HEADERS(),
+        });
+
+        if (response.status === 200) {
             return response.json();
         } else {
             return Promise.reject("Ha ocurrido un error");
         }
     } catch (error) {
-        return Promise.reject("Ha ocurrido un error: "+ error);
+        return Promise.reject("Ha ocurrido un error: " + error);
     }
-}
+};
 
 
 export {login, register, getCountries, getRegistros};

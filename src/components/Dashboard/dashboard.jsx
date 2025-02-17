@@ -10,7 +10,8 @@ const Dashboard = ({userData, onLogout}) => {
         async function fetchData() {
             if (userData) {
                 const {id} = userData;
-                const response = await getRegistros(id);
+                const {apikey} = userData;
+                const response = await getRegistros(id, apikey);
                 setRegistros(response);
             }
         }
