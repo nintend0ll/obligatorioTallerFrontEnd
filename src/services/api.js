@@ -49,7 +49,7 @@ const register = async(username, password, country) =>{
             }),
         });
         if(response.status===200){
-            
+            login(username, password);
             return response.json();
         }else{
             return Promise.reject("Ha ocurrido un error");
