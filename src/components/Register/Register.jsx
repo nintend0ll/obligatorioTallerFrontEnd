@@ -1,13 +1,14 @@
 import React from 'react';
 import { useEffect, useRef, useState } from "react";
 import '../Register/Register.css'; 
-import { Link } from 'react-router-dom'; // Importa Link
+import { Link, useNavigate } from 'react-router-dom'; // Importa Link
 import { register } from '../../services/api';
 import {getCountries} from'../../services/api';
 import Alert from "../UI/Alert/Alert"; // Importa componente Alert
 
 
-const Register = () => {
+
+const Register = ({onLogin}) => {
 
   const inputUsernameRef = useRef();
   const inputPasswordRef = useRef();
@@ -21,6 +22,7 @@ const Register = () => {
   const [classMessage, setClassMessage] = useState('');
 
   const [countries, setCountries] = useState([]);
+  const navigateTo = useNavigate();
 
   useEffect(()=>{
     const fetchCountries = async()=>{
@@ -46,6 +48,9 @@ const Register = () => {
       setClassMessage("alert-success");
       setAlertMessage("Inicio de sesion correcto");
       setShowAlert(true);
+      onLogin(response);
+      navigateTo("/dashboard");
+
 
     } catch(error){
       setClassMessage("alert-danger");

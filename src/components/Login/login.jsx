@@ -20,7 +20,7 @@ const Login =({onLogin, userData}) =>{
   const [classMessage, setClassMessage] = useState(''); // Estado para la clase del mensaje de alerta
 
   useEffect(() => {
-    if (userData) { 
+    if (userData != null) { 
       navigateTo('/dashboard'); 
      }
   }, [userData]);

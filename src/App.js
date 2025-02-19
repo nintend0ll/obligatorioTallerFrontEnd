@@ -10,6 +10,8 @@ function App() {
 
   const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
 
+  const navigateTo = useNavigate();
+
   useEffect(() => {
     const localData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
     setUserData(localData);
@@ -22,7 +24,8 @@ function App() {
   
   const _onLogout = () =>{
     localStorage.removeItem("userData");
-    setUserData("null");
+    setUserData(null);
+    navigateTo('/login');
   };
   
   return (
@@ -33,7 +36,7 @@ function App() {
         {/* Ruta para el Login */}
         <Route path="/Login" element={<Login onLogin={_onLogin} userData={userData} />} />
         {/* Ruta para el Registro */}
-        <Route path="/Register" element={<Register />} />
+        <Route path="/Register" element={<Register onLogin={_onLogin} />} />
         <Route path="/Dashboard" element={
           <PrivateRoute userData={userData}>
               <Dashboard userData={userData} onLogout={_onLogout} />
