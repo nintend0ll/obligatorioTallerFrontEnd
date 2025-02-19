@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Header from "./Header/Header";
 import { getRegistros } from "../../services/api";
+import RegistroActividad from "./RegistroActividades/RegistroActividad";
 
 const Dashboard = ({userData, onLogout}) => { 
 
@@ -23,6 +24,7 @@ const Dashboard = ({userData, onLogout}) => {
     return (
     <div className="container-fluid">
         <Header onLogout={onLogout} />
+        <RegistroActividad></RegistroActividad>
     </div>
     );
 

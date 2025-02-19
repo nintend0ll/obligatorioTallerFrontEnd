@@ -93,5 +93,21 @@ const getRegistros = async (iduser) => {
     }
 };
 
+const getActividades = async() =>{
+    try{
+        const response = await fetch(`${BASE_URL}/actividades.php`,{
+            method: "GET",
+            headers : HEADERS(),
+        });
+        if(response.status===200){
+            return response.json();
+        }else{
+            return Promise.reject("Ha ocurrido un error");
+        }
+    }catch(error){
+        return Promise.reject("Ha ocurrido un error: "+error);
+    }
+}
 
-export {login, register, getCountries, getRegistros};
+
+export {login, register, getCountries, getRegistros, getActividades};
