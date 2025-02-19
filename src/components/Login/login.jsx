@@ -5,9 +5,14 @@ import "./Login.css";
 import {useNavigate} from 'react-router-dom'; // Importa useNavigate
 import { login } from "../../services/api";
 import Alert from "../UI/Alert/Alert";
+import { useSelector, useDispatch } from "react-redux";
+import { onLogin } from "../../app/slices/userSlice";
 
 
-const Login =({onLogin, userData}) =>{
+const Login =({}) =>{
+
+  const userData = useSelector((state) => state.userSlice.userData);
+  const dispatch = useDispatch();
 
   const inputUsernameRef = useRef();
   const inputPasswordRef = useRef();
@@ -39,7 +44,7 @@ const Login =({onLogin, userData}) =>{
       setShowAlert(true);
 
       setTimeout(() => {
-        onLogin(response);
+        dispatch(onLogin(response));
       }, 2000);
     } catch (error) {
       setClassMessage("alert-danger");
