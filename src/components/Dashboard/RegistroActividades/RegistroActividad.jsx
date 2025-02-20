@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
 import Alert from "../../UI/Alert/Alert";
-import { saveActividad } from '../../../services/api';
+import { getActividades, saveActividad } from '../../../services/api';
 import Button from "../../UI/Button/Button";
 import { getUserDataFromLocalStorage } from "../../../utils/utils";
 import { onAddActividad } from "../../../app/slices/userSlice";
@@ -21,33 +21,25 @@ const RegistroActividad = ({ onToggleModal })=>{
     const [alertMessage, setAlertMessage] = useState('');
     const [classMessage, setClassMessage] = useState(''); // Estado para la clase del mensaje de alerta
 
-    const _onHandleClick = async () => {
-        const idActividad = actividadRef.current.value;
-        const tiempo = duracionRef.current.value;
-        const fecha = fechaRef.current.value;
-
-    
-        if (idActividad && tiempo && fecha) {
-          const userData = getUserDataFromLocalStorage();
-    
-          if (userData) {
-            const { id, apiKey } = userData;
-            const response = await saveActividad(idActividad, tiempo, fecha, apiKey);
-            if (response && response.codigo === 200) {
-              dispatch(onAddActividad(response.actividad));
-              onToggleModal();
-            } else {
-              setShowAlert(true);
-              setAlertMessage("Error al registrar la actividad.");
-              setClassMessage("danger");
-            }
+    useEffect(() => {
+      const fetchActivities = async () => {
+        try {
+          const response = await getActividades();
+          if(response.codigo === 200) {
+            setOptions(response.actividades);
+          }else{
+            showAlert(true);
+            setAlertMessage("Error al cargar las actividades");
+            setClassMessage("danger");
           }
-        } else {
-          setShowAlert(true);
-          setAlertMessage("Completa todos los campos.");
-          setClassMessage("warning");
+        } catch (error) {
+          showAlert(true);
+          setAlertMessage("Error al cargar las actividades" + error);
+          setClassMessage("danger");
         }
       };
+      fetchActivities();
+    },[]);
 
       const handleSelectChange = (event)=>{
         setSelectedOption(event.target.value);
@@ -86,7 +78,6 @@ const RegistroActividad = ({ onToggleModal })=>{
               type="button"
               classColor="btn btn-primary"
               cta="Registrar actividad"
-              onHandleClick={_onHandleClick}
             />
           </form>
         </div>

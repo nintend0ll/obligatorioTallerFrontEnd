@@ -111,7 +111,7 @@ const getActividades = async() =>{
 
 const saveActividad = async (idActividad, tiempo, fecha, idUsuario, apiKey) => {
     try {
-        const response = await fetch(`${BASE_URL}/saveActividad.php`, {
+        const response = await fetch(`${BASE_URL}/registros.php`, {
             method: "POST",
             headers: HEADERS(),
             body: JSON.stringify({ idActividad, tiempo, fecha, idUsuario, apiKey })
