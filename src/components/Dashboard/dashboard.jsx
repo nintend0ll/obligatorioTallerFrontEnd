@@ -5,6 +5,8 @@ import RegistroActividad from "./RegistroActividades/RegistroActividad";
 
 import { useSelector, useDispatch } from "react-redux";
 import {setRegistros} from "../../app/slices/userSlice";
+import ActivityList from"./ListadoActividades/ActivityList";
+
 
 
 const Dashboard = () => { 
@@ -48,6 +50,7 @@ const Dashboard = () => {
     <div className="container-fluid">
         <Header  />
         <RegistroActividad></RegistroActividad>
+        <ActivityList/>
         
     </div>
     );

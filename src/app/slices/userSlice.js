@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
 export const userSlice = createSlice({
   name: "userSlice",
@@ -20,6 +19,11 @@ export const userSlice = createSlice({
     setRegistros:(state, action) =>{
       state.registros = action.payload;
     },
+    onDeleteActivity:(state, action)=>{
+      const{payload}=action;
+      const filteredActivities= state.registros.filter((a)=>a.id!==payload);
+      state.activities =filteredActivities;
+    },
     /*onLoadRegistros: (state, action) => {
         const { payload } = action;
         state.
@@ -29,6 +33,6 @@ export const userSlice = createSlice({
     },
   },
 });
-export const { onLogin, onLogout, setRegistros, onAddActividad } = 
+export const { onLogin, onLogout, setRegistros, onDeleteActivity, onAddActividad } =
   userSlice.actions;
 export default userSlice.reducer;
