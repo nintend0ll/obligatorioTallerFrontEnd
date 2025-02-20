@@ -44,6 +44,20 @@ const RegistroActividad = ({ onToggleModal })=>{
       const handleSelectChange = (event)=>{
         setSelectedOption(event.target.value);
       };
+
+      const _onHandleClick = async () => {
+        console.log('entro')
+        try{
+          const respuesta = await saveActividad(actividadRef.current.value, duracionRef.current.value, fechaRef.current.value);
+        console.log(respuesta)
+        setAlertMessage(respuesta.mensaje)
+        console.log(respuesta.mensaje)
+        } catch(error){
+          setAlertMessage(error.message);
+        }
+       
+      }
+
     
       return (
         <div className="container">
@@ -54,7 +68,8 @@ const RegistroActividad = ({ onToggleModal })=>{
               <label htmlFor="actividad">Actividad</label>
               <select
                     id="actividad"
-                    value = {selectedOpcion}
+                    //value = {selectedOpcion}
+                    ref={actividadRef}
                     onChange={handleSelectChange}
                     className='form-control'
                     >
@@ -78,6 +93,7 @@ const RegistroActividad = ({ onToggleModal })=>{
               type="button"
               classColor="btn btn-primary"
               cta="Registrar actividad"
+              onHandleClick={_onHandleClick}
             />
           </form>
         </div>

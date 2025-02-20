@@ -109,12 +109,12 @@ const getActividades = async() =>{
     }
 };
 
-const saveActividad = async (idActividad, tiempo, fecha, idUsuario, apiKey) => {
+const saveActividad = async (idActividad, tiempo, fecha) => {
     try {
         const response = await fetch(`${BASE_URL}/registros.php`, {
             method: "POST",
             headers: HEADERS(),
-            body: JSON.stringify({ idActividad, tiempo, fecha, idUsuario, apiKey })
+            body: JSON.stringify({ idActividad, tiempo, fecha })
         });
         if (response.status === 200) return response.json();
         return Promise.reject("Error al guardar la actividad");
@@ -122,6 +122,7 @@ const saveActividad = async (idActividad, tiempo, fecha, idUsuario, apiKey) => {
         return Promise.reject(`Error: ${error}`);
     }
 };
+
 
 
 
