@@ -48,6 +48,10 @@ const RegistroActividad = ({ onToggleModal })=>{
           setClassMessage("warning");
         }
       };
+
+      const handleSelectChange = (event)=>{
+        setSelectedOption(event.target.value);
+      };
     
       return (
         <div className="container">
@@ -56,7 +60,19 @@ const RegistroActividad = ({ onToggleModal })=>{
             {showAlert && <Alert classColor={classMessage} message={alertMessage} />}
             <div className="form-group">
               <label htmlFor="actividad">Actividad</label>
-              <input type="text" id="actividad" ref={actividadRef} className="form-control" />
+              <select
+                    id="actividad"
+                    value = {selectedOpcion}
+                    onChange={handleSelectChange}
+                    className='form-control'
+                    >
+                        <option value="">Selecciona una actividad</option>
+                        {options.map(option =>(
+                            <option key={option.id} value={option.id}>
+                                {option.nombre}
+                            </option>
+                        ))}
+                    </select>
             </div>
             <div className="form-group">
               <label htmlFor="duracion">Duración (minutos)</label>
