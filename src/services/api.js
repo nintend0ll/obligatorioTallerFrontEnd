@@ -9,8 +9,8 @@ const HEADERS = () => {
     const userData = getUserData();
     return {
         "Content-Type": "application/json",
-        "apikey": userData?.apikey || "",
-        "iduser": userData?.iduser || ""
+        "apikey": userData?.apiKey || "",
+        "iduser": userData?.id || ""
     };
 };
 
@@ -78,6 +78,8 @@ const getCountries = async () => {
 
 const getRegistros = async (iduser) => {
     try {
+        const headers = HEADERS();
+        console.log(headers)
         const response = await fetch(`${BASE_URL}/registros.php?idUsuario=${iduser}`, {
             method: "GET",
             headers: HEADERS(),
@@ -109,12 +111,12 @@ const getActividades = async() =>{
     }
 };
 
-const saveActividad = async (idActividad, tiempo, fecha) => {
+const saveActividad = async (idActividad, idUsuario, tiempo, fecha) => {
     try {
         const response = await fetch(`${BASE_URL}/registros.php`, {
             method: "POST",
             headers: HEADERS(),
-            body: JSON.stringify({ idActividad, tiempo, fecha })
+            body: JSON.stringify({ idActividad, idUsuario, tiempo, fecha })
         });
         if (response.status === 200) return response.json();
         return Promise.reject("Error al guardar la actividad");

@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { onLogin } from "../../app/slices/userSlice";
 
 
-const Login =({}) =>{
+const Login =() =>{
 
   const userData = useSelector((state) => state.userSlice.userData);
   const dispatch = useDispatch();

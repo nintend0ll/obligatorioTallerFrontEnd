@@ -34,12 +34,12 @@ function App() {
         {/* Redirige la ruta principal ("/") al Login */}
         <Route path="/" element={<Login onLogin={_onLogin} />} />
         {/* Ruta para el Login */}
-        <Route path="/Login" element={<Login onLogin={_onLogin} userData={userData} />} />
+        <Route path="/Login" element={<Login onLogin={_onLogin} />} />
         {/* Ruta para el Registro */}
         <Route path="/Register" element={<Register onLogin={_onLogin} />} />
         <Route path="/Dashboard" element={
-          <PrivateRoute userData={userData}>
-              <Dashboard userData={userData} onLogout={_onLogout} />
+          <PrivateRoute>
+              <Dashboard onLogout={_onLogout} />
           </PrivateRoute>
         } />
       </Routes>
