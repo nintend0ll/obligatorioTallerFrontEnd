@@ -5,13 +5,12 @@ import Button from "../../UI/Button/Button";
 
 
 const RegistroActividad = ()=>{
-    const actividadRef = useRef();
     const duracionRef = useRef();
     const fechaRef = useRef();
 
 
     const [options, setOptions] = useState([]);
-    const [selectedOpcion, setSelectedOption] = useState('');
+    const [selectedOpcion, setSelectedOption] = useState('');   
     const [btnDisabled, setBtnDisabled] = useState(true);
     const [showAlert, setShowAlert] = useState(false); // Estado para mostrar un mensaje de alerta
     const [alertMessage, setAlertMessage] = useState('');

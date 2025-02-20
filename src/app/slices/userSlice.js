@@ -5,6 +5,7 @@ export const userSlice = createSlice({
   name: "userSlice",
   initialState: {
     userData: null,
+    registros:[],
   },
   reducers: {
     onLogin: (state, action) => {
@@ -16,12 +17,15 @@ export const userSlice = createSlice({
       state.userData = null;
       localStorage.removeItem("userData");
     },
+    setRegistros:(state, action) =>{
+      state.registros =action.payload;
+    },
     /*onLoadRegistros: (state, action) => {
         const { payload } = action;
         state.
     },*/
   },
 });
-export const { onLogin, onLogout } =
+export const { onLogin, onLogout, setRegistros } =
   userSlice.actions;
 export default userSlice.reducer;
