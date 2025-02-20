@@ -1,7 +1,8 @@
-import Button from "../../UI/Button/Button"
+import Button from "../../../UI/Button/Button"
 import ActivityTable from "./ActivityTable/ActivityTable"
 
-const ActivityList = ()=>{
+
+const ActivityList = ({onToggleModal})=>{
 
 
     return(
@@ -9,10 +10,10 @@ const ActivityList = ()=>{
             <div className="row w-100 my-2">
                 <div className="col text-right">
                 <Button
-                    cta={"Crear nueva tarea"}
+                    cta={"registrar actividad"}
                     type={"submit"}
                     classColor={"btn-success"}
-                    //onHandleClick={onToggleModal}
+                    onHandleClick={onToggleModal}
                 />
                 </div>
             </div>

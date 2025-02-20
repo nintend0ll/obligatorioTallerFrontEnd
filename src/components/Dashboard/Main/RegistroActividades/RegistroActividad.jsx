@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
-import Alert from "../../UI/Alert/Alert";
-import { getActividades, saveActividad } from '../../../services/api';
-import Button from "../../UI/Button/Button";
-import { getUserDataFromLocalStorage } from "../../../utils/utils";
-import { onAddActividad } from "../../../app/slices/userSlice";
+import Alert from "../../../UI/Alert/Alert";
+import { getActividades, saveActividad } from '../../../../services/api';
+import Button from "../../../UI/Button/Button";
+import { getUserDataFromLocalStorage } from "../../../../utils/utils";
+import { onAddActividad } from "../../../../app/slices/userSlice";
 import { useDispatch } from 'react-redux';
 
 

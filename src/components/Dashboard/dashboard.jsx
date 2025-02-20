@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Header from "./Header/Header";
 import { getRegistros } from "../../services/api";
-import RegistroActividad from "./RegistroActividades/RegistroActividad";
+import RegistroActividad from "./Main/RegistroActividades/RegistroActividad";
 
 import { useSelector, useDispatch } from "react-redux";
 import {setRegistros} from "../../app/slices/userSlice";
-import ActivityList from"./ListadoActividades/ActivityList";
+import ActivityList from"./Main/ListadoActividades/ActivityList";
+import Main from "./Main/Main";
 
 
 
@@ -48,9 +49,8 @@ const Dashboard = () => {
 
     return (
     <div className="container-fluid">
-        <Header  />
-        <RegistroActividad></RegistroActividad>
-        <ActivityList/>
+        <Header/>
+        <Main/>
         
     </div>
     );

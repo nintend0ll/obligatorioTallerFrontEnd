@@ -1,5 +1,5 @@
 import { useDispatch } from "react-redux";
-import {onDeleteActivity} from "../../../../../app/slices/userSlice";
+import {onDeleteActivity} from "../../../../../../app/slices/userSlice";
 
 const ActivityRow =({img, nombre, tiempo, fecha})=>{
     const disptcher = useDispatch();
