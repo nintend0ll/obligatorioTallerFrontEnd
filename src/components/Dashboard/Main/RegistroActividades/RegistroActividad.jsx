@@ -48,7 +48,9 @@ const RegistroActividad = ({ onToggleModal })=>{
       const _onHandleClick = async () => {
         console.log('entro')
         try{
-          const respuesta = await saveActividad(actividadRef.current.value, duracionRef.current.value, fechaRef.current.value);
+          const respuesta = await 
+          saveActividad
+          (actividadRef.current.value, duracionRef.current.value, fechaRef.current.value);
         console.log(respuesta)
         setAlertMessage(respuesta.mensaje)
         console.log(respuesta.mensaje)

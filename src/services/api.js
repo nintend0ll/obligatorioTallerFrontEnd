@@ -1,4 +1,4 @@
-const BASE_URL = "https://movetrack.develotion.com/";
+const BASE_URL = "https://movetrack.develotion.com";
 
 const getUserData = () => {
     const userData = localStorage.getItem("userData");
@@ -9,8 +9,8 @@ const HEADERS = () => {
     const userData = getUserData();
     return {
         "Content-Type": "application/json",
-        "apikey": userData?.apiKey || "",
-        "iduser": userData?.id || ""
+        "apikey": userData?.apikey || "",
+        "iduser": userData?.iduser || ""
     };
 };
 
