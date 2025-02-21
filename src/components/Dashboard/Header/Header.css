@@ -1,13 +1,18 @@
 /* Estilos generales para el Header */
 .header {
-    background-color: #f8bbd0; /* Tono rosado claro */
-    padding: 1rem 2rem; /* Espaciado interno */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-    margin-bottom: 20px; /* Margen inferior */
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
+  background-color: #f8bbd0; /* Tono rosado claro */
+  padding: 1rem 2rem; /* Espaciado interno */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  margin-bottom: 20px; /* Margen inferior */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%; /* Asegura que el header ocupe todo el ancho */
+  position: fixed; /* Fija el header en la parte superior */
+  top: 0; /* Lo coloca en la parte superior */
+  left: 0; /* Lo coloca en la parte izquierda */
+  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+}
   
   /* Estilos para el título del Header */
   .header h1 {

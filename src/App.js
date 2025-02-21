@@ -8,38 +8,29 @@ import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
 
-  const [userData, setUserData] = useState(null); // Estado para almacenar los datos del usuario
-
-  const navigateTo = useNavigate();
 
   useEffect(() => {
-    const localData = localStorage.getItem("userData") ? JSON.parse(localStorage.getItem("userData")) : null;
-    setUserData(localData);
-  }, []);
+    const localData = localStorage.getItem("userData")
+      ? JSON.parse(localStorage.getItem("userData"))
+      : null;
 
-  const _onLogin = (loginData) => { 
-    setUserData(loginData);
-    localStorage.setItem("userData", JSON.stringify(loginData));
-  };
+    //setUserData(localData);
+  }, []);
   
-  const _onLogout = () =>{
-    localStorage.removeItem("userData");
-    setUserData(null);
-    navigateTo('/login');
-  };
+  const _onLogout = () => {};
   
   return (
     <div className='App'>
       <Routes>
         {/* Redirige la ruta principal ("/") al Login */}
-        <Route path="/" element={<Login onLogin={_onLogin} />} />
+        <Route path="/" element={<Login/>} />
         {/* Ruta para el Login */}
-        <Route path="/Login" element={<Login onLogin={_onLogin} />} />
+        <Route path="/Login" element={<Login />} />
         {/* Ruta para el Registro */}
-        <Route path="/Register" element={<Register onLogin={_onLogin} />} />
+        <Route path="/Register" element={<Register/>} />
         <Route path="/Dashboard" element={
           <PrivateRoute>
-              <Dashboard onLogout={_onLogout} />
+              <Dashboard />
           </PrivateRoute>
         } />
       </Routes>
