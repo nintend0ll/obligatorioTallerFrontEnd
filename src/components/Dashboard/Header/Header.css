@@ -1,38 +1,43 @@
-/* Estilos generales para el Header */
 .header {
-  background-color: #f8bbd0; /* Tono rosado claro */
-  padding: 1rem 2rem; /* Espaciado interno */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
-  margin-bottom: 20px; /* Margen inferior */
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%; /* Asegura que el header ocupe todo el ancho */
-  position: fixed; /* Fija el header en la parte superior */
-  top: 0; /* Lo coloca en la parte superior */
-  left: 0; /* Lo coloca en la parte izquierda */
-  z-index: 1000; /* Asegura que esté por encima de otros elementos */
+  background-color: #f8bbd0;
+  padding: 1rem 0; /* Elimina padding horizontal para evitar desbordes */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  
 }
-  
-  /* Estilos para el título del Header */
-  .header h1 {
-    color: #e91e63; /* Tono rosado oscuro */
-    margin: 0; /* Elimina el margen por defecto */
-    font-size: 1.5rem;
-    font-weight: bold;
-  }
 
-  /* Estilos para botones en el Header (si los hay) */
+.header-container {
+  width: 100%;
+  max-width: 1200px; /* Limita el ancho máximo */
+  margin: 0 auto; /* Centra el contenido */
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Separa título y botón */
+  padding: 0 2rem; /* Añade espacio interno sin romper el diseño */
+}
+
+.header h1 {
+  color: #e91e63;
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
 .header .btn {
-    background-color: #e91e63; /* Tono rosado oscuro */
-    color: white;
-    border: none;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-  }
-  
-  .header .btn:hover {
-    background-color: #c2185b; /* Tono rosado más oscuro al pasar el mouse */
-  }
+  background-color: #e91e63;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.header .btn:hover {
+  background-color: #c2185b;
+}

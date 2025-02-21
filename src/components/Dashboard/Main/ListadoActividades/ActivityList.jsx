@@ -1,32 +1,30 @@
-import Button from "../../../UI/Button/Button"
-import ActivityTable from "./ActivityTable/ActivityTable"
+import Button from "../../../UI/Button/Button";
+import ActivityTable from "./ActivityTable/ActivityTable";
+import "./ActivityList.css";
 
-
-const ActivityList = ({onToggleModal})=>{
-
-
-    return(
-        <>                
-            <div className="row w-100 my-2">
-                <div className="col text-right">
-                <Button
-                    cta={"registrar actividad"}
-                    type={"submit"}
-                    classColor={"btn-success"}
-                    onHandleClick={onToggleModal}
-                />
-                </div>
-            </div>
-            <div className="row my-3">
-                <div className="col-12">
-                <div className="card">
-                    <div className="card-body">
-                    <ActivityTable />
+const ActivityList = ({ onToggleModal }) => {
+    return (
+        <>
+            <div className="activity-list-container">
+                <div className="activity-card">
+                    <div className="card">
+                        <div className="card-body">
+                            <ActivityTable />
+                        </div>
                     </div>
                 </div>
+
+                <div className="activity-footer">
+                    <Button
+                        cta={"Registrar Actividad"}
+                        type={"submit"}
+                        classColor={"btn-success"}
+                        onHandleClick={onToggleModal}
+                    />
                 </div>
             </div>
         </>
-    )
-}
+    );
+};
+
 export default ActivityList;
