@@ -113,12 +113,12 @@ const getActividades = async() =>{
 
 const saveActividad = async (idActividad, iduser, tiempo, fecha) => {
     try {
-        const payload = { idActividad, iduser, tiempo, fecha };
+        const payload = { idActividad, idUsuario: iduser, tiempo, fecha };
         console.log("Enviando datos:", payload);
         const response = await fetch(`${BASE_URL}/registros.php`, {
             method: "POST",
             headers: HEADERS(),
-            body: JSON.stringify({ idActividad, iduser, tiempo, fecha })
+            body: JSON.stringify(payload)
         });
         console.log("Response status:", response.status);
         console.log("Response body:", await response.text()); // Ver el cuerpo de la respuesta

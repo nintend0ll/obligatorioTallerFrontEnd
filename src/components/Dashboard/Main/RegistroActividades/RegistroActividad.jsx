@@ -52,7 +52,7 @@ const RegistroActividad = ({ onToggleModal })=>{
         try{
           const respuesta = await 
           saveActividad
-          (actividadRef.current.value, getUserDataFromLocalStorage().id , duracionRef.current.value, fechaRef.current.value);
+          (Number(actividadRef.current.value), getUserDataFromLocalStorage().id , Number(duracionRef.current.value), fechaRef.current.value);
         console.log(respuesta)
         setAlertMessage(respuesta.mensaje)
         console.log(respuesta.mensaje)
