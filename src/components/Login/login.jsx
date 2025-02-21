@@ -1,15 +1,14 @@
-
 import { Link } from 'react-router-dom'; // Importa Link
 import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
-import "./Login.css";
-import {useNavigate} from 'react-router-dom'; // Importa useNavigate
+import './Login.css'; // Ensure case matches
+import { useNavigate } from 'react-router-dom'; // Importa useNavigate
 import { login } from "../../services/api";
 import Alert from "../UI/Alert/Alert";
 import { useSelector, useDispatch } from "react-redux";
 import { onLogin } from "../../app/slices/userSlice";
 
 
-const Login =() =>{
+const Login = () => {
 
   const userData = useSelector((state) => state.userSlice.userData);
   const dispatch = useDispatch();
@@ -25,10 +24,10 @@ const Login =() =>{
   const [classMessage, setClassMessage] = useState(''); // Estado para la clase del mensaje de alerta
 
   useEffect(() => {
-    if (userData != null) { 
-      navigateTo('/dashboard'); 
-     }
-  }, [userData]);
+    if (userData != null) {
+      navigateTo('/dashboard');
+    }
+  }, [userData, navigateTo]); // Add navigateTo as dependency
 
   const _onHandleClick = async () => {
     try {
@@ -66,63 +65,63 @@ const Login =() =>{
       setBtnDisabled(true);
     }
   };
-  
-    return (
-        <div className="container" id="Login">
-        <div>
-          <h2>Iniciar sesión</h2>
-          <form>
-        {showAlert ? (
-          <Alert classColor={classMessage} message={alertMessage} />
-        ) : (
-          ""
-        )}
-        <div className="form-group">
-          <label htmlFor="usuario">Usuario</label>
-          <div className="input-group">
-            
-            <input
-              className="form-control"
-              id="usuario"
-              placeholder="usuario"
-              ref={inputUsernameRef}
-              onChange={_onHandleChange}
-            />
-          </div>
-        </div>
-        <div className="form-group">
-          <label htmlFor="password">Password</label>
-          <div className="input-group">
-            
-            <input
-              type="password"
-              className="form-control"
-              id="password"
-              placeholder="password"
-              ref={inputPasswordRef}
-              onChange={_onHandleChange}
-            />
-           
-          </div>
-        </div>
-        <button
-          type="submit"
-          className={`btn btn-primary btn-block`}
-          onClick={_onHandleClick}
-          disabled={btnDisabled}
-        >
-          {btnText}
-        </button>
 
-      </form>
-          {/* Enlace para mostrar el registro */}
-          <div className="registro-link">
-             <p>¿No tienes una cuenta?  
-                <Link to="/Register" id="mostrarRegistro"> Regístrate aquí</Link></p>
+  return (
+    <div className="container" id="Login">
+      <div>
+        <h2>Iniciar sesión</h2>
+        <form>
+          {showAlert ? (
+            <Alert classColor={classMessage} message={alertMessage} />
+          ) : (
+            ""
+          )}
+          <div className="form-group">
+            <label htmlFor="usuario">Usuario</label>
+            <div className="input-group">
+
+              <input
+                className="form-control"
+                id="usuario"
+                placeholder="usuario"
+                ref={inputUsernameRef}
+                onChange={_onHandleChange}
+              />
             </div>
+          </div>
+          <div className="form-group">
+            <label htmlFor="password">Password</label>
+            <div className="input-group">
+
+              <input
+                type="password"
+                className="form-control"
+                id="password"
+                placeholder="password"
+                ref={inputPasswordRef}
+                onChange={_onHandleChange}
+              />
+
+            </div>
+          </div>
+          <button
+            type="submit"
+            className={`btn btn-primary btn-block`}
+            onClick={_onHandleClick}
+            disabled={btnDisabled}
+          >
+            {btnText}
+          </button>
+
+        </form>
+        {/* Enlace para mostrar el registro */}
+        <div className="registro-link">
+          <p>¿No tienes una cuenta?
+            <Link to="/Register" id="mostrarRegistro"> Regístrate aquí</Link></p>
         </div>
       </div>
-    
-    );
+    </div>
+
+  );
 };
 export default Login;

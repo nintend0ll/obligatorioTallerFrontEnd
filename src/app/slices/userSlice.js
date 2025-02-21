@@ -29,7 +29,8 @@ export const userSlice = createSlice({
         state.
     },*/
     onAddActividad: (state, action) => {
-      state.registros.push(action.payload); 
+      const {payload} = action;
+      state.registros = [...state.registros, payload];
     },
   },
 });

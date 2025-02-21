@@ -1,8 +1,16 @@
+import { useState } from 'react';
 import Button from "../../../UI/Button/Button";
 import ActivityTable from "./ActivityTable/ActivityTable";
+import RegistroActividad from "../RegistroActividades/RegistroActividad"; // Import RegistroActividad
 import "./ActivityList.css";
 
-const ActivityList = ({ onToggleModal }) => {
+const ActivityList = () => {
+    const [showRegistro, setShowRegistro] = useState(false); // Estado para controlar la visibilidad
+
+    const toggleRegistro = () => {
+        setShowRegistro(!showRegistro);
+    };
+
     return (
         <>
             <div className="activity-list-container">
@@ -17,12 +25,18 @@ const ActivityList = ({ onToggleModal }) => {
                 <div className="activity-footer">
                     <Button
                         cta={"Registrar Actividad"}
-                        type={"submit"}
+                        type={"button"}
                         classColor={"btn-success"}
-                        onHandleClick={onToggleModal}
+                        onHandleClick={toggleRegistro} // Cambiar el estado al hacer clic
                     />
                 </div>
             </div>
+
+            {showRegistro && ( // Renderizar condicionalmente el formulario
+                <div className="registro-actividad-container">
+                    <RegistroActividad onToggleModal={toggleRegistro} />
+                </div>
+            )}
         </>
     );
 };
