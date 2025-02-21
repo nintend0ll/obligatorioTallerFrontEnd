@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 import ActivityRow from "./ActivityRow/ActivityRow";
 
+
 const ActivityTable = ()=>{
     const activities = useSelector((state)=>state.userSlice.registros);
 
     return(
+        <div class="table-container">
         <table className="table table-striped">
             <thead>
                 <tr>
@@ -26,6 +28,7 @@ const ActivityTable = ()=>{
                 ))}
             </tbody>
         </table>
+        </div>
     );
 };
 export default ActivityTable;
