@@ -25,7 +25,7 @@ const login = async (username, password) => {
             }),
         });
         if (response.status === 200) {
-            
+            localStorage.setItem("iduser", response.iduser);
             return response.json();
         }else{
             return Promise.reject("No se pudo iniciar sesion");
@@ -111,13 +111,18 @@ const getActividades = async() =>{
     }
 };
 
-const saveActividad = async (idActividad, idUsuario, tiempo, fecha) => {
+const saveActividad = async (idActividad, iduser, tiempo, fecha) => {
     try {
+        const payload = { idActividad, iduser, tiempo, fecha };
+        console.log("Enviando datos:", payload);
         const response = await fetch(`${BASE_URL}/registros.php`, {
             method: "POST",
             headers: HEADERS(),
-            body: JSON.stringify({ idActividad, idUsuario, tiempo, fecha })
+            body: JSON.stringify({ idActividad, iduser, tiempo, fecha })
         });
+        console.log("Response status:", response.status);
+        console.log("Response body:", await response.text()); // Ver el cuerpo de la respuesta
+
         if (response.status === 200) return response.json();
         return Promise.reject("Error al guardar la actividad");
     } catch (error) {

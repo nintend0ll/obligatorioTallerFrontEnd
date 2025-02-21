@@ -21,6 +21,8 @@ const RegistroActividad = ({ onToggleModal })=>{
     const [alertMessage, setAlertMessage] = useState('');
     const [classMessage, setClassMessage] = useState(''); // Estado para la clase del mensaje de alerta
 
+  
+
     useEffect(() => {
       const fetchActivities = async () => {
         try {
@@ -50,7 +52,7 @@ const RegistroActividad = ({ onToggleModal })=>{
         try{
           const respuesta = await 
           saveActividad
-          (actividadRef.current.value, duracionRef.current.value, fechaRef.current.value);
+          (actividadRef.current.value, getUserDataFromLocalStorage().id , duracionRef.current.value, fechaRef.current.value);
         console.log(respuesta)
         setAlertMessage(respuesta.mensaje)
         console.log(respuesta.mensaje)
