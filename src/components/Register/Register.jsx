@@ -5,15 +5,17 @@ import { Link, useNavigate } from 'react-router-dom'; // Importa Link
 import { register } from '../../services/api';
 import {getCountries} from'../../services/api';
 import Alert from "../UI/Alert/Alert"; // Importa componente Alert
+import { onLogin } from "../../app/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 
-
-const Register = ({onLogin}) => {
+const Register = () => {
 
   const inputUsernameRef = useRef();
   const inputPasswordRef = useRef();
   const inputCountryRef = useRef();
 
+  const dispatch = useDispatch();
 
   const [btnDisabled, setBtnDisabled]=useState(true);
   const [btnText, setBtnText] = useState("Registrar usuario");
@@ -48,7 +50,7 @@ const Register = ({onLogin}) => {
       setClassMessage("alert-success");
       setAlertMessage("Inicio de sesion correcto");
       setShowAlert(true);
-      onLogin(response);
+      dispatch(onLogin(response));
       navigateTo("/dashboard");
 
 

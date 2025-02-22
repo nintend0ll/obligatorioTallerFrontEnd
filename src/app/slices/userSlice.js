@@ -25,16 +25,15 @@ export const userSlice = createSlice({
       const filteredActivities= state.registros.filter((a)=>a.id!==payload);
       state.activities =filteredActivities;
     },
-    /*onLoadRegistros: (state, action) => {
-        const { payload } = action;
-        state.
-    },*/
+    setActivities: (state, action) => { 
+      state.activities = action.payload;
+    },
     onAddActividad: (state, action) => {
       const {payload} = action;
       state.registros = [...state.registros, payload];
     },
   },
 });
-export const { onLogin, onLogout, setRegistros, onDeleteActivity, onAddActividad } =
+export const { onLogin, onLogout, setRegistros, setActivities, onDeleteActivity, onAddActividad } =
   userSlice.actions;
 export default userSlice.reducer;
