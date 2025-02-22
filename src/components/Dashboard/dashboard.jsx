@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import Header from "./Header/Header.jsx";
-import { getRegistros } from "../../services/api";
+import { getRegistros } from "../../services/api.js";
 import { useSelector, useDispatch } from "react-redux";
-import { setRegistros } from "../../app/slices/userSlice";
-import Main from "./Main/Main";
+import { setRegistros } from "../../app/slices/userSlice.js";
+import Main from "./Main/Main.jsx";
 
 const Dashboard = () => {
   const userData = useSelector((state) => state.userSlice.userData);

@@ -91,3 +91,22 @@
 .table .btn:hover {
     background-color: #c2185b;
 }
+
+.filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.filter-btn {
+    padding: 8px 12px;
+    border: none;
+    background-color: #f8a2c2;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.filter-btn.active {
+    background-color: #e63978;
+}
