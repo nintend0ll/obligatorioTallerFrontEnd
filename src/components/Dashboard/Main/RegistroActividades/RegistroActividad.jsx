@@ -56,6 +56,7 @@ const RegistroActividad = ({ onToggleModal })=>{
         console.log(respuesta)
         setAlertMessage(respuesta.mensaje)
         console.log(respuesta.mensaje)
+        dispatch(onAddActividad(respuesta));
         } catch(error){
           setAlertMessage(error.message);
         }

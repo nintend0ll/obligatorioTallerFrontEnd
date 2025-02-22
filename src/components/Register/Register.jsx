@@ -54,8 +54,9 @@ const Register = ({onLogin}) => {
 
     } catch(error){
       setClassMessage("alert-danger");
-      setAlertMessage(error);
+      setAlertMessage(error.message);
       setShowAlert(true);
+      console.log(error.message)
     }finally{
       setBtnDisabled(false);
       setBtnText("Registrar usuario");
@@ -85,7 +86,7 @@ const Register = ({onLogin}) => {
           ""
         )}
           <div className="form-group">
-            <label htmlFor="nombreUsuario">Usuario</label>
+            <label htmlFor="nombreUsuarioRegis">Usuario</label>
             <input type="text" 
             id="nombreUsuarioRegis" 
             className="from-control"
@@ -96,7 +97,7 @@ const Register = ({onLogin}) => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="passwordRegis">Password</label>
             <input type="password" 
             id="passwordRegis" 
             className="password" 
@@ -106,7 +107,7 @@ const Register = ({onLogin}) => {
             required />
           </div>
           <div className="form-group">
-            <label htmlFor="pais">Pais de residencia</label>
+            <label htmlFor="paises">Pais de residencia</label>
             <select id="paises" 
             className="pais" 
             ref={inputCountryRef}
