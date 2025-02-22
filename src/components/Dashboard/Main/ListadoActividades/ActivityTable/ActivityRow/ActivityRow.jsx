@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
 import {onDeleteActivity} from "../../../../../../app/slices/userSlice";
 
-const ActivityRow =({img, nombre, tiempo, fecha})=>{
-    const disptcher = useDispatch();
+const ActivityRow =({id,img, nombre, tiempo, fecha})=>{
+    const dispatcher = useDispatch();
     const _onDeleteActivity=()=>{
-        disptcher(onDeleteActivity(nombre));
+        
+      console.log("Eliminando actividad: "+ id);
+        dispatcher(onDeleteActivity(nombre));
     };
 
 

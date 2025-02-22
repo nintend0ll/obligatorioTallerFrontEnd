@@ -31,11 +31,11 @@ const ActivityTable = ()=>{
     };
 
     return(
-        <div class="table-container">
+        <div clasNames="table-container">
+        <ActivityFilter onFilterChange={handleFilterChange}/>
         <table className="table table-striped">
             <thead>
                 <tr>
-                <ActivityFilter onFilterChange={handleFilterChange}/>
                     <th>#</th>
                     <th>Actividad</th>
                     <th>Tiempo</th>
@@ -47,6 +47,7 @@ const ActivityTable = ()=>{
                 {filterActivities().map((activity)=>(
                     <ActivityRow
                         key={activity.id}
+                        id={activity.id}
                         actividad ={activity.nombre}
                         tiempo ={activity.tiempo}
                         fecha={activity.fecha}

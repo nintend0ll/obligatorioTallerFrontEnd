@@ -10,24 +10,28 @@ const ActivityFilter=({onFilterChange})=>{
     };
 
     return(
-        <div className="filter-container">
-            <button
-                className={`filter-btn ${selectedFilter === "week" ? "active" : ""}`}
-                onClick={()=>handleFilterChange("week")}
-                >Ultima semana</button>
+        <th colSpan="5">
+            <div className="filter-container">
                 <button
-                className={`filter-btn ${selectedFilter === "month" ? "active" : ""}`}
-                onClick={() => handleFilterChange("month")}
-            >
-                Último Mes
-            </button>
-            <button
-                className={`filter-btn ${selectedFilter === "all" ? "active" : ""}`}
-                onClick={() => handleFilterChange("all")}
-            >
-                ver todo
-            </button>
-        </div>
+                    className={`filter-btn ${selectedFilter === "week" ? "active" : ""}`}
+                    onClick={()=>handleFilterChange("week")}
+                    >Ultima semana</button>
+                    <button
+                    className={`filter-btn ${selectedFilter === "month" ? "active" : ""}`}
+                    onClick={() => handleFilterChange("month")}
+                >
+                    Último Mes
+                </button>
+                <button
+                    className={`filter-btn ${selectedFilter === "all" ? "active" : ""}`}
+                    onClick={() => handleFilterChange("all")}
+                >
+                    ver todo
+                </button> 
+            </div>
+
+        </th>
     );
 }
 export default ActivityFilter;
+
