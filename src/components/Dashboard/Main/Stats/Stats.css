@@ -1,0 +1,23 @@
+.stats-default {
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+.stats-info {
+  background-color: #cce5ff;
+  border-radius: 12px;
+  padding: 1rem;
+}
+.row {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  gap: 1rem; /* Espacio entre los elementos */
+}
+
+.col {
+  width: 200px;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+}

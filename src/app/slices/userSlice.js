@@ -4,6 +4,7 @@ export const userSlice = createSlice({
   name: "userSlice",
   initialState: {
     userData: null,
+    activities: [],
     registros:[],
   },
   reducers: {

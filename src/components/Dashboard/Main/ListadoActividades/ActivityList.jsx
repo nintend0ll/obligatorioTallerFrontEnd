@@ -4,7 +4,7 @@ import ActivityTable from "./ActivityTable/ActivityTable";
 import RegistroActividad from "../RegistroActividades/RegistroActividad"; // Import RegistroActividad
 import "./ActivityList.css";
 
-const ActivityList = () => {
+const ActivityList = ({onToggleModal}) => {
     const [showRegistro, setShowRegistro] = useState(false); // Estado para controlar la visibilidad
 
     const toggleRegistro = () => {
@@ -25,9 +25,9 @@ const ActivityList = () => {
                 <div className="activity-footer">
                     <Button
                         cta={"Registrar Actividad"}
-                        type={"button"}
+                        type={"submit"}
                         classColor={"btn-success"}
-                        onHandleClick={toggleRegistro} // Cambiar el estado al hacer clic
+                        onHandleClick={onToggleModal} 
                     />
                 </div>
             </div>
