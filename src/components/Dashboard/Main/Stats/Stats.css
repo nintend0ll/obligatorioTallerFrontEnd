@@ -9,14 +9,39 @@
   border-radius: 12px;
   padding: 1rem;
 }
+
+.progress-container {
+  background-color: #f8bbd0;
+  padding: 1rem;
+  border-radius: 12px;
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Unificar los estilos de los cuadros */
+.stats-default, .stats-info, .progress-container {
+  border-radius: 12px;
+  padding: 1rem;
+  text-align: center;
+  width: 200px;
+  margin: 0 auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .row {
   display: flex;
-  justify-content: center; /* Centra horizontalmente */
-  gap: 1rem; /* Espacio entre los elementos */
+  justify-content: center;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
 .col {
-  width: 200px;
+  flex: 1;
+  max-width: 200px;
+  min-width: 200px;
   padding: 1rem;
   border-radius: 12px;
   text-align: center;

@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import "./Stats.css";
 import StatsInfo from "./StatsInfo/StatsInfo";
 import dayjs from "dayjs";
+import MsgProgress from "./MsgProgress";
 
 const Stats = () => { 
     const registros = useSelector((state) => state.userSlice.registros);
@@ -18,12 +19,19 @@ const Stats = () => {
       .reduce((total, registro) => total + registro.tiempo, 0);
   };
 
-  return (
-    <div className="row text-center">
-      <StatsInfo title={"Tiempo Total"} value={_getTiempoTotal()} />
-      <StatsInfo title={"Tiempo Diario"} value={_getTiempoDiario()} classColor={"stats-info"} />
+return (
+  <div className="row">
+    <div className="col ">
+      <StatsInfo title={"Tiempo Total"} value={`${_getTiempoTotal()}`} />
     </div>
-  );
+    <div className="col ">
+      <StatsInfo title={"Tiempo Diario"} value={`${_getTiempoDiario()}`} classColor={"stats-info"} />
+    </div>
+    <div className="col ">
+      <MsgProgress />
+    </div>
+  </div>
+);
 };
 
 export default Stats;

@@ -32,10 +32,13 @@ const ActivityTable = ()=>{
 
     return(
         <div class="table-container">
+        <div className="filter-wrapper">
+            <ActivityFilter onFilterChange={handleFilterChange} />
+        </div>
         <table className="table table-striped">
             <thead>
                 <tr>
-                <ActivityFilter onFilterChange={handleFilterChange}/>
+                
                     <th>#</th>
                     <th>Actividad</th>
                     <th>Tiempo</th>
