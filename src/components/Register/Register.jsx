@@ -5,15 +5,17 @@ import { Link, useNavigate } from 'react-router-dom'; // Importa Link
 import { register } from '../../services/api';
 import {getCountries} from'../../services/api';
 import Alert from "../UI/Alert/Alert"; // Importa componente Alert
+import { onLogin } from "../../app/slices/userSlice";
+import { useDispatch } from "react-redux";
 
 
-
-const Register = ({onLogin}) => {
+const Register = () => {
 
   const inputUsernameRef = useRef();
   const inputPasswordRef = useRef();
   const inputCountryRef = useRef();
 
+  const dispatch = useDispatch();
 
   const [btnDisabled, setBtnDisabled]=useState(true);
   const [btnText, setBtnText] = useState("Registrar usuario");
@@ -36,7 +38,8 @@ const Register = ({onLogin}) => {
   fetchCountries();
 },[]);
 
-  const _onHandleClick = async()=>{
+  const _onHandleClick = async(event)=>{
+    event.preventDefault();
     try{
       setBtnDisabled(true);
       setBtnText("Enviando datos....");
@@ -46,9 +49,9 @@ const Register = ({onLogin}) => {
         inputCountryRef.current.value
       );
       setClassMessage("alert-success");
-      setAlertMessage("Inicio de sesion correcto");
+      setAlertMessage("Registro exitoso, iniciando sesion...");
       setShowAlert(true);
-      onLogin(response);
+      dispatch(onLogin(response));
       navigateTo("/dashboard");
 
 
@@ -125,7 +128,7 @@ const Register = ({onLogin}) => {
           <button
           type="submit"
           className={`btn btn-primary btn-block`}
-          onClick={_onHandleClick}
+          onClick={(e) => _onHandleClick(e)}
           disabled={btnDisabled}
         >
           {btnText}
