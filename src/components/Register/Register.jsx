@@ -38,7 +38,8 @@ const Register = () => {
   fetchCountries();
 },[]);
 
-  const _onHandleClick = async()=>{
+  const _onHandleClick = async(event)=>{
+    event.preventDefault();
     try{
       setBtnDisabled(true);
       setBtnText("Enviando datos....");
@@ -48,7 +49,7 @@ const Register = () => {
         inputCountryRef.current.value
       );
       setClassMessage("alert-success");
-      setAlertMessage("Inicio de sesion correcto");
+      setAlertMessage("Registro exitoso, iniciando sesion...");
       setShowAlert(true);
       dispatch(onLogin(response));
       navigateTo("/dashboard");
@@ -127,7 +128,7 @@ const Register = () => {
           <button
           type="submit"
           className={`btn btn-primary btn-block`}
-          onClick={_onHandleClick}
+          onClick={(e) => _onHandleClick(e)}
           disabled={btnDisabled}
         >
           {btnText}

@@ -48,14 +48,16 @@ const register = async(username, password, country) =>{
                 idPais:country
             }),
         });
-        if(response.status===200){
-            login(username, password);
-            return response.json();
-        }else{
-            return Promise.reject("Ha ocurrido un error");
+        const data = await response.json();
+
+        if (response.status === 200 ) {
+            const userData = await login(username, password);
+            return userData;
+        } else {
+            return Promise.reject("Error al registrarse");
         }
-    }catch(error){
-        return Promise.reject("Ha ocurrido un error: "+ error);
+    } catch (error) {
+        return Promise.reject("Error al registrarse: " + error);
     }
 };
 
