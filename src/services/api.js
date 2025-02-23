@@ -117,18 +117,24 @@ const saveActividad = async (idActividad, iduser, tiempo, fecha) => {
     try {
         const payload = { idActividad, idUsuario: iduser, tiempo, fecha };
         console.log("Enviando datos:", payload);
+
         const response = await fetch(`${BASE_URL}/registros.php`, {
             method: "POST",
             headers: HEADERS(),
-            body: JSON.stringify(payload)
+            body: JSON.stringify(payload),
         });
-        console.log("Response status:", response.status);
-        console.log("Response body:", await response.text()); // Ver el cuerpo de la respuesta
 
-        if (response.status === 200) return response.json();
-        return Promise.reject("Error al guardar la actividad");
+        if (!response.ok) {
+            throw new Error(`Error en la petición: ${response.status}`);
+        }
+
+        const data = await response.json();
+        console.log("Respuesta de la API:", data);
+
+        return data;
     } catch (error) {
-        return Promise.reject(`Error: ${error}`);
+        console.error("Error en saveActividad:", error);
+        throw new Error("Error al guardar la actividad");
     }
 };
 

@@ -4,6 +4,9 @@ import { getActividades, saveActividad } from '../../../../services/api';
 import Button from "../../../UI/Button/Button";
 import { getUserDataFromLocalStorage } from "../../../../utils/utils";
 import { useDispatch } from 'react-redux';
+import "./RegistroActividad.css";
+import { onAddActividad } from '../../../../app/slices/userSlice';
+
 
 const RegistroActividad = ({ onToggleModal }) => {
   const actividadRef = useRef();
@@ -23,6 +26,7 @@ const RegistroActividad = ({ onToggleModal }) => {
     try {
 
       const response = await getActividades();
+      
       if (response.codigo === 200) {
         setOptions(response.actividades);
       } else {
@@ -45,11 +49,12 @@ const RegistroActividad = ({ onToggleModal }) => {
     setSelectedOption(event.target.value);
   };
 
+  
   const _onHandleClick = async () => {
-    console.log('entro');
+    console.log('Entró a _onHandleClick');
+    
     const fechaIngresada = fechaRef.current.value;
-    const fechaActual = new Date().toISOString().split("T")[0]; 
-    // Obtiene la fecha de hoy en formato YYYY-MM-DD
+    const fechaActual = new Date().toISOString().split("T")[0];
 
     if (fechaIngresada > fechaActual) {
       setShowAlert(true);
@@ -59,21 +64,36 @@ const RegistroActividad = ({ onToggleModal }) => {
     }
 
     try {
+      const userData = getUserDataFromLocalStorage();
+      if (!userData) return;
+
+      
       const respuesta = await saveActividad(
         Number(actividadRef.current.value),
-        getUserDataFromLocalStorage().id,
+        userData.id,
         Number(duracionRef.current.value),
         fechaIngresada
       );
-      console.log(respuesta);
-      setAlertMessage(respuesta.mensaje);
+
+      const nuevaActividad = {
+          idActividad: respuesta.idActividad, 
+          idUsuario: respuesta.idUsuario, 
+          tiempo: respuesta.tiempo, 
+          fecha: respuesta.fecha,
+      };
+
+      dispatch(onAddActividad([nuevaActividad]));  
+
+      setAlertMessage("Actividad registrada con éxito");
       setClassMessage("success");
-      console.log(respuesta.mensaje);
-      fetchActivities(); // Recargar la tabla después de agregar una actividad
+
     } catch (error) {
-      setAlertMessage(error.message);
+      console.log(error);
+      setAlertMessage("Error al registrar actividad");
+      setClassMessage("danger");
     }
-  };
+};
+
 
   return (
     <div className="container">

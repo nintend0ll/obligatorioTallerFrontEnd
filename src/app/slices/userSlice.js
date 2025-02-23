@@ -9,29 +9,24 @@ export const userSlice = createSlice({
   },
   reducers: {
     onLogin: (state, action) => {
-      const { payload } = action;
-      state.userData = payload;
-      localStorage.setItem("userData", JSON.stringify(payload));
+      state.userData = action.payload;
+      localStorage.setItem("userData", JSON.stringify(action.payload));
     },
     onLogout: (state) => {
       state.userData = null;
       localStorage.removeItem("userData");
     },
-    setRegistros:(state, action) =>{
-      state.registros = action.payload;
+    setRegistros: (state, action) => {
+      state.registros = action.payload; 
     },
-    onDeleteActivity:(state, action)=>{
-      const{payload}=action;
-      console.log("payload recibido: "+payload);
-      const filteredActivities= state.registros.filter((a)=>a.id!==payload);
-      state.activities =filteredActivities;
+    onDeleteActivity: (state, action) => {
+      state.registros = state.registros.filter((a) => a.id !== action.payload); 
     },
-    setActivities: (state, action) => { 
-      state.activities = action.payload;
+    setActivities: (state, action) => {
+      state.activities = action.payload; 
     },
     onAddActividad: (state, action) => {
-      const {payload} = action;
-      state.registros = [...state.registros, payload];
+      state.registros = [...state.registros, ...action.payload]; 
     },
   },
 });

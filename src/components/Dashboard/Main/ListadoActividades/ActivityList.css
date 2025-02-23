@@ -1,9 +1,19 @@
 .activity-list-container {
+    display: flex;
+    flex-direction: column; /* Asegura que los elementos se apilen en columna */
+    align-items: center; /* Centra el contenido */
     width: 100%;
-    max-width: 1400px; /* Más ancho para pantallas grandes */
-    margin: 0 auto; /* Centrado horizontal */
-    padding: 2rem; /* Espaciado interno cómodo */
-    margin-top: 60px;
+    max-width: 900px; /* Ajusta según el diseño */
+    margin: 0 auto;
+    padding: 1rem;
+}
+
+
+.filter-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center; /* Centra los botones */
+    margin-bottom: 20px; /* Agrega espacio entre los filtros y la tabla */
 }
 
 /* Header con botón alineado a la derecha */
@@ -50,16 +60,12 @@
 .table {
     width: 100%;
     border-collapse: collapse;
-   
 }
 
 .table-container {
-    display: flex;
-    width: 100%; 
-    overflow-x: auto; 
-    max-width: 100%;
-    
-  }
+    width: 100%;
+    overflow-x: auto; /* Para manejar tablas anchas en pantallas pequeñas */
+}
 
 .table th, .table td {
     padding: 1rem;
@@ -94,17 +100,21 @@
 
 .filter-container {
     display: flex;
+    justify-content: center; /* Centra los filtros */
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 
 .filter-btn {
-    padding: 8px 12px;
+    padding: 10px 15px;
     border: none;
     background-color: #f8a2c2;
     color: white;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 20px; /* Bordes más redondeados */
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .filter-btn.active {

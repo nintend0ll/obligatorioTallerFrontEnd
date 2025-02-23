@@ -31,9 +31,9 @@ const ActivityTable = ()=>{
             const data = await getActividades();
             const enrichedActivities = setActivityTypes(activities, data.actividades);
             setActividadesCompletas(enrichedActivities);    
-               }
+            }
         fetchActivityTypes();
-      }, []);
+      }, [activities]);
 
     const handleFilterChange=(selectedFilter)=>{
         setFilter(selectedFilter);
@@ -51,7 +51,7 @@ const ActivityTable = ()=>{
                 return activityDate>=lastWeek;
             }else if(filter==="month"){
                 const lastMonth=new Date();
-                lastMonth.setDate(now.getMonth()-1)
+                lastMonth.setMonth(now.getMonth() - 1);
                 return activityDate>=lastMonth;
             }
             return true;//porque all es el que es x default
@@ -59,33 +59,38 @@ const ActivityTable = ()=>{
     };
 
     return(
-        <div class="table-container">
-        <div className="filter-wrapper">
-            <ActivityFilter onFilterChange={handleFilterChange} />
-        </div>
-        <table className="table table-striped">
-            <thead>
-                <tr>
-                
-                    <th>#</th>
-                    <th>Actividad</th>
-                    <th>Tiempo</th>
-                    <th>Fecha</th>
-                    <th>Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-                {filterActivities().map((actividadesCompletas)=>(
-                    <ActivityRow
-                        id={actividadesCompletas.id}
-                        imagen={actividadesCompletas.imagen}
-                        nombre ={actividadesCompletas.nombre}
-                        tiempo ={actividadesCompletas.tiempo}
-                        fecha={actividadesCompletas.fecha}
-                    />
-                ))}
-            </tbody>
-        </table>
+        <div className="activity-list-container">
+            {/* Contenedor de filtros separado */}
+            <div className="filter-wrapper">
+                <ActivityFilter onFilterChange={handleFilterChange} />
+            </div>
+            
+            {/* Contenedor de la tabla */}
+            <div className="table-container">
+                <table className="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Actividad</th>
+                            <th>Tiempo</th>
+                            <th>Fecha</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {filterActivities().map((actividadesCompletas)=>(
+                            <ActivityRow
+                                key={actividadesCompletas.id}
+                                id={actividadesCompletas.id}
+                                imagen={actividadesCompletas.imagen}
+                                nombre ={actividadesCompletas.nombre}
+                                tiempo ={actividadesCompletas.tiempo}
+                                fecha={actividadesCompletas.fecha}
+                            />
+                        ))}
+                    </tbody>
+                </table>
+            </div>
         </div>
     );
 };
