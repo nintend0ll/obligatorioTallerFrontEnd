@@ -7,10 +7,7 @@ const IMAGEN_BASE_URL = "https://movetrack.develotion.com/imgs/"
 
 const ActivityRow =({id, imagen, nombre, tiempo, fecha})=>{
     const dispatcher = useDispatch();
-    const activities = useSelector((state) => state.userSlice.activities);
-    
-    const activity = activities.find((activity) => activity.id === id);
-    const imageUrl = activity ? `${IMAGEN_BASE_URL}{id}.png` : null;
+    const imageUrl = `${IMAGEN_BASE_URL}${imagen}.png`;
 
     const _onDeleteActivity=async()=>{
         const response = await deleteActivity(id);
@@ -21,7 +18,7 @@ const ActivityRow =({id, imagen, nombre, tiempo, fecha})=>{
 
     return(
         <tr>
-            <td><img src={imageUrl} alt={nombre} /></td>
+            <td><img src={imageUrl} alt="icon" /></td>
             <td>{nombre}</td>
             <td>{tiempo}</td>
             <td>{fecha}</td>
@@ -34,3 +31,4 @@ const ActivityRow =({id, imagen, nombre, tiempo, fecha})=>{
     );
 };
 export default ActivityRow;
+

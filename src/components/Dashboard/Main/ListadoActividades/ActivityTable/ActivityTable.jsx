@@ -1,11 +1,39 @@
 import { useSelector } from "react-redux";
 import ActivityRow from "./ActivityRow/ActivityRow";
 import ActivityFilter from "./ActivityFilter/ActivityFilter";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { getActividades } from "../../../../../services/api";
+const IMAGEN_BASE_URL = "https://movetrack.develotion.com/imgs/";
 
 const ActivityTable = ()=>{
     const activities = useSelector((state)=>state.userSlice.registros);
     const [filter, setFilter]=useState("all");
+    const [actividadesCompletas, setActividadesCompletas] = useState([]);
+
+    const setActivityTypes = (userActivities, activityTypes) => {
+        // Retornamos el array enriquecido directamente
+        return userActivities.map(activity => {
+          // Buscamos el tipo que coincida con el idActividad del registro
+          const matchingType = activityTypes.find(tipo => tipo.id === activity.idActividad);
+          // Si lo encontramos, lo agregamos al objeto de actividad
+          return matchingType
+            ? {
+                ...activity,
+                // Sobreescribimos o agregamos las propiedades de nombre e imagen del tipo
+                nombre: matchingType.nombre,
+                imagen: matchingType.imagen,
+              }
+            : activity;
+        });
+      };
+    useEffect(() => {
+        async function fetchActivityTypes() {
+            const data = await getActividades();
+            const enrichedActivities = setActivityTypes(activities, data.actividades);
+            setActividadesCompletas(enrichedActivities);    
+               }
+        fetchActivityTypes();
+      }, []);
 
     const handleFilterChange=(selectedFilter)=>{
         setFilter(selectedFilter);
@@ -14,7 +42,7 @@ const ActivityTable = ()=>{
 
     const filterActivities =()=>{
         const now = new Date();
-        return activities.filter((activity)=>{
+        return actividadesCompletas.filter((activity)=>{
             const activityDate = new Date(activity.fecha);
 
             if(filter==="week"){
@@ -47,13 +75,13 @@ const ActivityTable = ()=>{
                 </tr>
             </thead>
             <tbody>
-                {filterActivities().map((activity)=>(
+                {filterActivities().map((actividadesCompletas)=>(
                     <ActivityRow
-                        key={activity.id}
-                        id={activity.id}
-                        actividad ={activity.nombre}
-                        tiempo ={activity.tiempo}
-                        fecha={activity.fecha}
+                        id={actividadesCompletas.id}
+                        imagen={actividadesCompletas.imagen}
+                        nombre ={actividadesCompletas.nombre}
+                        tiempo ={actividadesCompletas.tiempo}
+                        fecha={actividadesCompletas.fecha}
                     />
                 ))}
             </tbody>
