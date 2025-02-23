@@ -13,7 +13,7 @@ const RegistroActividad = ({ onToggleModal }) => {
   const dispatch = useDispatch();
 
   const [options, setOptions] = useState([]);
-  const [selectedOpcion, setSelectedOption] = useState('');   
+  const [selectedOption, setSelectedOption] = useState('');   
   const [btnDisabled, setBtnDisabled] = useState(true);
   const [showAlert, setShowAlert] = useState(false); // Estado para mostrar un mensaje de alerta
   const [alertMessage, setAlertMessage] = useState('');
@@ -21,6 +21,7 @@ const RegistroActividad = ({ onToggleModal }) => {
 
   const fetchActivities = async () => {
     try {
+
       const response = await getActividades();
       if (response.codigo === 200) {
         setOptions(response.actividades);
@@ -46,15 +47,27 @@ const RegistroActividad = ({ onToggleModal }) => {
 
   const _onHandleClick = async () => {
     console.log('entro');
+    const fechaIngresada = fechaRef.current.value;
+    const fechaActual = new Date().toISOString().split("T")[0]; 
+    // Obtiene la fecha de hoy en formato YYYY-MM-DD
+
+    if (fechaIngresada > fechaActual) {
+      setShowAlert(true);
+      setAlertMessage("No puedes registrar actividades en el futuro.");
+      setClassMessage("danger");
+      return;
+    }
+
     try {
       const respuesta = await saveActividad(
         Number(actividadRef.current.value),
         getUserDataFromLocalStorage().id,
         Number(duracionRef.current.value),
-        fechaRef.current.value
+        fechaIngresada
       );
       console.log(respuesta);
       setAlertMessage(respuesta.mensaje);
+      setClassMessage("success");
       console.log(respuesta.mensaje);
       fetchActivities(); // Recargar la tabla después de agregar una actividad
     } catch (error) {
