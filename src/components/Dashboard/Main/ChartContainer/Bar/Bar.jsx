@@ -4,8 +4,12 @@ import { useSelector } from "react-redux";
 const Bar = () => {
   const actividades = useSelector((state) => state.userSlice.activities); // Ajusta el nombre si es registros
 
-  // Obtener la cantidad de sesiones por actividad
-  const actividadesUnicas = [...new Set(actividades.map((a) => a.idActividad))]; // Extrae actividades únicas
+  const actividadMap = actividades.reduce((acc, act) => {
+    acc[act.id] = act.nombre;
+    return acc;
+  }, {});
+
+  const actividadesUnicas = [...new Set(actividades.map((a) => a.idActividad))];
 
   const _getSesionesPorActividad = () => {
     return actividadesUnicas.map(
@@ -17,17 +21,17 @@ const Bar = () => {
     series: [{ data: _getSesionesPorActividad() }],
     options: {
       chart: { type: "bar", height: 350 },
-      colors: ["#007BFF", "#28A745", "#FFC107", "#DC3545", "#17A2B8"], // Colores variados
+      colors: ["#007BFF", "#28A745", "#FFC107", "#DC3545", "#17A2B8"], 
       plotOptions: {
         bar: {
           borderRadius: 4,
           borderRadiusApplication: "end",
           horizontal: false,
-          distributed: true, // Colorea cada barra de forma diferente
+          distributed: true, 
         },
       },
       dataLabels: { enabled: true },
-      xaxis: { categories: actividadesUnicas },
+      categories: actividadesUnicas.map(id => actividadMap[id] )
     },
   };
 

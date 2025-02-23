@@ -31,4 +31,3 @@ const ActivityFilter=({onFilterChange})=>{
     );
 }
 export default ActivityFilter;
-
