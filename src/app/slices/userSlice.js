@@ -22,6 +22,7 @@ export const userSlice = createSlice({
     },
     onDeleteActivity:(state, action)=>{
       const{payload}=action;
+      console.log("payload recibido: "+payload);
       const filteredActivities= state.registros.filter((a)=>a.id!==payload);
       state.activities =filteredActivities;
     },

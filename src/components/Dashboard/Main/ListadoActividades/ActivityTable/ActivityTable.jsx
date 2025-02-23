@@ -31,7 +31,8 @@ const ActivityTable = ()=>{
     };
 
     return(
-        <div clasNames="table-container">
+        
+        <div className="table-container">
         <ActivityFilter onFilterChange={handleFilterChange}/>
         <table className="table table-striped">
             <thead>

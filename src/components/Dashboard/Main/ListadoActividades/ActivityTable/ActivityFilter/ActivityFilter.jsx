@@ -10,8 +10,7 @@ const ActivityFilter=({onFilterChange})=>{
     };
 
     return(
-        <th colSpan="5">
-            <div className="filter-container">
+        <>
                 <button
                     className={`filter-btn ${selectedFilter === "week" ? "active" : ""}`}
                     onClick={()=>handleFilterChange("week")}
@@ -28,9 +27,7 @@ const ActivityFilter=({onFilterChange})=>{
                 >
                     ver todo
                 </button> 
-            </div>
-
-        </th>
+                </>
     );
 }
 export default ActivityFilter;

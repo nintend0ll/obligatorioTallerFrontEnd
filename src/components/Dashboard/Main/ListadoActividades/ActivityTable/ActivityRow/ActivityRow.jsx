@@ -1,12 +1,18 @@
 import { useDispatch } from "react-redux";
 import {onDeleteActivity} from "../../../../../../app/slices/userSlice";
+import { useSelector } from "react-redux";
+import { deleteActivity } from "../../../../../../services/api";
+
 
 const ActivityRow =({id,img, nombre, tiempo, fecha})=>{
     const dispatcher = useDispatch();
-    const _onDeleteActivity=()=>{
+    
+    const _onDeleteActivity=async()=>{
+        const response = await deleteActivity(id);
         
-      console.log("Eliminando actividad: "+ id);
-        dispatcher(onDeleteActivity(nombre));
+        
+        console.log("Eliminando actividad: "+ id);
+        dispatcher(onDeleteActivity(response));
     };
 
 
