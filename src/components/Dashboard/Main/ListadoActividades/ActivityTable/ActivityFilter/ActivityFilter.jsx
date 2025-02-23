@@ -14,18 +14,18 @@ const ActivityFilter=({onFilterChange})=>{
                 <button
                     className={`filter-btn ${selectedFilter === "week" ? "active" : ""}`}
                     onClick={()=>handleFilterChange("week")}
-                    >Ultima semana</button>
+                    >Última semana</button>
                     <button
                     className={`filter-btn ${selectedFilter === "month" ? "active" : ""}`}
                     onClick={() => handleFilterChange("month")}
                 >
-                    Último Mes
+                    Último mes
                 </button>
                 <button
                     className={`filter-btn ${selectedFilter === "all" ? "active" : ""}`}
                     onClick={() => handleFilterChange("all")}
                 >
-                    ver todo
+                    Ver todo
                 </button> 
                 </>
     );
