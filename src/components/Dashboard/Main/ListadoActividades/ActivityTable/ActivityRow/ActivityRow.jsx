@@ -9,8 +9,6 @@ const ActivityRow =({id,img, nombre, tiempo, fecha})=>{
     
     const _onDeleteActivity=async()=>{
         const response = await deleteActivity(id);
-        
-        
         console.log("Eliminando actividad: "+ id);
         dispatcher(onDeleteActivity(response));
     };

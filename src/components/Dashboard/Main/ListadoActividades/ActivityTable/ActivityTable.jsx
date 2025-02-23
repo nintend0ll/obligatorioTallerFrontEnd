@@ -50,6 +50,7 @@ const ActivityTable = ()=>{
                 {filterActivities().map((activity)=>(
                     <ActivityRow
                         key={activity.id}
+                        id={activity.id}
                         actividad ={activity.nombre}
                         tiempo ={activity.tiempo}
                         fecha={activity.fecha}
