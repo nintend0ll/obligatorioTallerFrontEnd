@@ -25,7 +25,7 @@ const Bar = () => {
   // Asegurar que `activities` y `activities.actividades` existan
   const actividadesArray = activities?.actividades ?? []; // Si no existe, usa []
 
-  console.log("actividadesArray:", actividadesArray);
+  
 
   const sesionesPorActividad = registrosArray.reduce((acc, reg) => {
     const actividad = activities?.actividades?.find(
@@ -40,8 +40,7 @@ const Bar = () => {
   const categorias = Object.keys(sesionesPorActividad);
   const cantidades = Object.values(sesionesPorActividad);
 
-  console.log("categorias: " + categorias);
-  console.log("cantidad de sesiones: " + cantidades);
+
 
   if (categorias.length === 0) {
     return <h3>No hay sesiones registradas</h3>;

@@ -33,10 +33,15 @@ const Login = () => {
     try {
       setBtnDisabled(true);
       setBtnText("Enviando ...");
+
+      const usuario = inputUsernameRef.current.value; //guardamos el nombre de usuario para mostrarlo en el header
+
       const response = await login(
-        inputUsernameRef.current.value,
+        usuario,
         inputPasswordRef.current.value
       );
+
+      localStorage.setItem("usuario", usuario); //aqui lo seteamos
 
       setClassMessage("alert-success");
       setAlertMessage("Inicio de sesion correcto");

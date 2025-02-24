@@ -5,11 +5,11 @@ import { onLogout } from "../../../app/slices/userSlice";
 
 const Header = () => {
   const dispatcher = useDispatch();
-
+  const usuario = localStorage.getItem("usuario"); // Recuperamos el usuario para mostrarlo en el header
   return (
     <header className="header">
       <div className="header-container">
-        <h1>Bienvenido</h1>
+        <h1>Bienvenida {usuario ? usuario : "Usuario"} a Pretty Strong </h1>
         <div className="ms-auto">
           <Button
             cta={"Logout"}
