@@ -8,12 +8,12 @@ const Pie = () => {
 
   //Obtenemos los ultimos siete dias con dayjs
   const ultimosSieteDias = Array.from({ length: 7 }, (_, i) =>
-    dayjs().subtract(i, "day").format("YYYY-MM-DD")
+    dayjs().subtract(i, "day").format("DD-MM-YYYY")
   ).reverse();
 
   // Mapeamos los registros a un diccionario con fechas
   const datosPorDia = registros.reduce((acc, registro) => {
-    const fecha = dayjs(registro.fecha).format("YYYY-MM-DD");
+    const fecha = dayjs(registro.fecha).format("DD-MM-YYYY");
     acc[fecha] = (acc[fecha] || 0) + registro.tiempo;
     return acc;
   }, {});
@@ -22,7 +22,7 @@ const Pie = () => {
   const series = ultimosSieteDias.map((fecha) => datosPorDia[fecha] || 0);
   const labels = ultimosSieteDias;
 
-  // Verificamos si la serie tiene datos 
+  // Verificamos si la serie tiene datos
   const hayDatos = series.some((valor) => valor > 0);
 
   if (!hayDatos) {
@@ -54,4 +54,3 @@ const Pie = () => {
 };
 
 export default Pie;
-
