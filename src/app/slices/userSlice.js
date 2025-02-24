@@ -64,6 +64,9 @@ export const userSlice = createSlice({
       const {payload} = action;
       state.registros = [...state.registros, payload];
     },
+    onAutoLogin: (state, action) => { 
+      state.userData = action.payload;
+    }
   },  extraReducers: (builder) => {
     builder
       .addCase(fetchActivities.pending, (state) => {
@@ -93,6 +96,6 @@ export const userSlice = createSlice({
   }
   
 });
-export const { onLogin, onLogout, setRegistros, setActivities, onAddActividad, onDeleteActivity } =
+export const { onLogin, onLogout, setRegistros, setActivities, onAddActividad, onDeleteActivity, onAutoLogin } =
   userSlice.actions;
 export default userSlice.reducer;

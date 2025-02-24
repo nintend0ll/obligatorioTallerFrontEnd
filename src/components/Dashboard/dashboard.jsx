@@ -15,11 +15,12 @@ const Dashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (userData) {
+      if (userData != null) {
         const { id, apikey } = userData;
         try {
           const response = await getRegistros(id, apikey);
           if (response.codigo === 200) {
+            setExtraLoading(false);
             dispatch(setRegistros(response.registros));
           } else {
             setError("Ha ocurrido un error");
@@ -27,22 +28,17 @@ const Dashboard = () => {
         } catch (error) {
           setError("Error al cargar los registros: " + error);
         } finally {
-          setLoading(false);
+          setExtraLoading(false);
         }
       }
     };
 
     fetchData();
 
-    // simulamos tiempo extra para apreciar el gif de Madoka Magica
-    const timer = setTimeout(() => {
-      setExtraLoading(false);
-    }, 3500); 
 
-    return () => clearTimeout(timer);
-  }, [userData, dispatch]);
+  }, []);
 
-  if (loading || extraLoading) {
+  if (extraLoading) {
     return (
       <div style={{ textAlign: "center", marginTop: "50px" }}>
         <img src={madoka} alt="Cargando..." width="200" />
