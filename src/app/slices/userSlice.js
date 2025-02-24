@@ -25,11 +25,8 @@ export const userSlice = createSlice({
     setActivities: (state, action) => {
       state.activities = action.payload; 
     },
-    onAddActividad: (state, action) => {
-      state.registros = [...state.registros, ...action.payload]; 
-    },
   },
 });
-export const { onLogin, onLogout, setRegistros, setActivities, onDeleteActivity, onAddActividad } =
+export const { onLogin, onLogout, setRegistros, setActivities, onDeleteActivity } =
   userSlice.actions;
 export default userSlice.reducer;

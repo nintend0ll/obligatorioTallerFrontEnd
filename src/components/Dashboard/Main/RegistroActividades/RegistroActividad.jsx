@@ -1,12 +1,11 @@
 import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
 import Alert from "../../../UI/Alert/Alert";
-import { getActividades, saveActividad } from '../../../../services/api';
+import { getActividades, getRegistros, saveRegistro } from '../../../../services/api';
 import Button from "../../../UI/Button/Button";
 import { getUserDataFromLocalStorage } from "../../../../utils/utils";
 import { useDispatch } from 'react-redux';
 import "./RegistroActividad.css";
-import { onAddActividad } from '../../../../app/slices/userSlice';
-
+import { setRegistros } from '../../../../app/slices/userSlice';
 
 const RegistroActividad = ({ onToggleModal }) => {
   const actividadRef = useRef();
@@ -16,17 +15,16 @@ const RegistroActividad = ({ onToggleModal }) => {
   const dispatch = useDispatch();
 
   const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState('');   
-  const [btnDisabled, setBtnDisabled] = useState(true);
-  const [showAlert, setShowAlert] = useState(false); // Estado para mostrar un mensaje de alerta
+  const [selectedOption, setSelectedOption] = useState(null);
+  const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState('');
-  const [classMessage, setClassMessage] = useState(''); // Estado para la clase del mensaje de alerta
+  const [classMessage, setClassMessage] = useState('');
 
   const fetchActivities = async () => {
     try {
 
       const response = await getActividades();
-      
+
       if (response.codigo === 200) {
         setOptions(response.actividades);
       } else {
@@ -49,10 +47,9 @@ const RegistroActividad = ({ onToggleModal }) => {
     setSelectedOption(event.target.value);
   };
 
-  
+
   const _onHandleClick = async () => {
-    console.log('Entró a _onHandleClick');
-    
+
     const fechaIngresada = fechaRef.current.value;
     const fechaActual = new Date().toISOString().split("T")[0];
 
@@ -67,22 +64,20 @@ const RegistroActividad = ({ onToggleModal }) => {
       const userData = getUserDataFromLocalStorage();
       if (!userData) return;
 
-      
-      const respuesta = await saveActividad(
+      const respuesta = await saveRegistro(
         Number(actividadRef.current.value),
         userData.id,
         Number(duracionRef.current.value),
         fechaIngresada
       );
 
-      const nuevaActividad = {
-          idActividad: respuesta.idActividad, 
-          idUsuario: respuesta.idUsuario, 
-          tiempo: respuesta.tiempo, 
-          fecha: respuesta.fecha,
-      };
+      if (respuesta.codigo !== 200) {
+        throw new Error("Error al registrar actividad");
+      }
 
-      dispatch(onAddActividad([nuevaActividad]));  
+      const responseRegistros = await getRegistros(userData.id, userData.apiKey);
+
+      dispatch(setRegistros(responseRegistros.registros));// Agrego la nueva lista de registros al slice
 
       setAlertMessage("Actividad registrada con éxito");
       setClassMessage("success");
@@ -92,8 +87,7 @@ const RegistroActividad = ({ onToggleModal }) => {
       setAlertMessage("Error al registrar actividad");
       setClassMessage("danger");
     }
-};
-
+  };
 
   return (
     <div className="container">

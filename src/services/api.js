@@ -113,7 +113,7 @@ const getActividades = async() =>{
     }
 };
 
-const saveActividad = async (idActividad, iduser, tiempo, fecha) => {
+const saveRegistro = async (idActividad, iduser, tiempo, fecha) => {
     try {
         const payload = { idActividad, idUsuario: iduser, tiempo, fecha };
         console.log("Enviando datos:", payload);
@@ -156,4 +156,4 @@ const deleteActivity =async (idRegistro)=>{
 
 
 
-export {login, register, getCountries, getRegistros, deleteActivity , getActividades, saveActividad};
+export {login, register, getCountries, getRegistros, deleteActivity , getActividades, saveRegistro};
