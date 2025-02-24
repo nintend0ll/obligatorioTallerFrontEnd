@@ -1,9 +1,9 @@
 
 .container {
-    max-width: 1200px;
+    max-width: 600px; /* Reduce el ancho para hacerlo más compacto */
     margin: 20px auto;
     background: #fff;
-    padding: 20px;
+    padding: 15px; /* Reduce el espacio interno */
     border-radius: 12px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -14,10 +14,12 @@ h2 {
     margin-bottom: 15px;
 }
 
-
+/* Mejorar alineación de etiquetas */
 .form-group {
-    margin-bottom: 15px;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Alinear etiquetas a la izquierda */
+    margin-bottom: 10px; /* Menos separación */
 }
 
 .form-group label {
@@ -26,13 +28,13 @@ h2 {
 }
 
 
+/* Ajusta los inputs */
 .form-control {
-    width: 100%;
-    padding: 10px;
+    width: 90%; /* Reduce un poco el ancho */
+    padding: 6px; /* Menos padding */
     border: 1px solid #ddd;
-    border-radius: 8px;
-    font-size: 16px;
-    transition: all 0.3s;
+    border-radius: 6px;
+    font-size: 14px; /* Letra más chica */
 }
 
 .form-control:focus {
@@ -41,18 +43,14 @@ h2 {
     box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
 }
 
-
+/* Reducir el tamaño del botón */
 .btn-primary {
-    background: #e91e63;
-    color: white;
-    padding: 12px;
-    width: 100%;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
+    padding: 10px; /* Reduce el alto del botón */
+    font-size: 14px; /* Reduce tamaño de texto */
+    width: auto; /* Evita que el botón ocupe todo el ancho */
+    min-width: 150px; /* Asegura que no sea demasiado pequeño */
 }
+
 
 .btn-primary:hover {
     background: #c2185b;

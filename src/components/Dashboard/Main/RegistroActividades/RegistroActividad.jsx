@@ -116,7 +116,7 @@ const RegistroActividad = ({ onToggleModal }) => {
           </select>
         </div>
         <div className="form-group">
-          <label htmlFor="duracion">Duración (minutos)</label>
+          <label htmlFor="duracion">Tiempo (minutos)</label>
           <input
             type="number"
             id="duracion"
@@ -136,7 +136,7 @@ const RegistroActividad = ({ onToggleModal }) => {
         <Button
           type="button"
           classColor="btn btn-primary"
-          cta="Registrar actividad"
+          cta="Registrar"
           onHandleClick={_onHandleClick}
         />
       </form>

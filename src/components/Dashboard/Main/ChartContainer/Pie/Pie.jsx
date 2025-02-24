@@ -4,9 +4,9 @@ import { useSelector } from "react-redux";
 import dayjs from "dayjs";
 
 const Pie = () => {
-  const registros = useSelector((state) => state.userSlice.registros);
+  const registros = useSelector((state) => state.userSlice.registros) ?? [];
 
-  //Obtenemos los ultimos siete dias con dayjs de manera eficiente
+  //Obtenemos los ultimos siete dias con dayjs
   const ultimosSieteDias = Array.from({ length: 7 }, (_, i) =>
     dayjs().subtract(i, "day").format("YYYY-MM-DD")
   ).reverse();
@@ -21,6 +21,13 @@ const Pie = () => {
   // Creamos los datos del gráfico asegurando que todos los días estén representados
   const series = ultimosSieteDias.map((fecha) => datosPorDia[fecha] || 0);
   const labels = ultimosSieteDias;
+
+  // Verificamos si la serie tiene datos 
+  const hayDatos = series.some((valor) => valor > 0);
+
+  if (!hayDatos) {
+    return <h3>No hay datos disponibles</h3>;
+  }
 
   const options = {
     labels,
@@ -47,3 +54,4 @@ const Pie = () => {
 };
 
 export default Pie;
+
