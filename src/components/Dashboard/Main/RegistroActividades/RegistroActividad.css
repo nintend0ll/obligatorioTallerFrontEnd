@@ -22,11 +22,6 @@ h2 {
     margin-bottom: 10px; /* Menos separación */
 }
 
-.form-group label {
-    font-weight: bold;
-    color: #333;
-}
-
 
 /* Ajusta los inputs */
 .form-control {
