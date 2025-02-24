@@ -9,7 +9,6 @@ import madoka from "../../assets/madoka.gif";
 const Dashboard = () => {
   const userData = useSelector((state) => state.userSlice.userData);
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [extraLoading, setExtraLoading] = useState(true);
 
@@ -34,8 +33,6 @@ const Dashboard = () => {
     };
 
     fetchData();
-
-
   }, []);
 
   if (extraLoading) {
