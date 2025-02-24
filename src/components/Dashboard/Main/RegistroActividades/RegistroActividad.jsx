@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
+import { useEffect, useRef, useState } from "react";
 import Alert from "../../../UI/Alert/Alert";
-import { getActividades, getRegistros, saveRegistro } from '../../../../services/api';
+import {
+  getActividades,
+  getRegistros,
+  saveRegistro,
+} from "../../../../services/api";
 import Button from "../../../UI/Button/Button";
 import { getUserDataFromLocalStorage } from "../../../../utils/utils";
-import { useDispatch } from 'react-redux';
+import { useDispatch } from "react-redux";
 import "./RegistroActividad.css";
-import { setRegistros } from '../../../../app/slices/userSlice';
+import { setRegistros } from "../../../../app/slices/userSlice";
 
 const RegistroActividad = ({ onToggleModal }) => {
   const actividadRef = useRef();
@@ -17,12 +21,11 @@ const RegistroActividad = ({ onToggleModal }) => {
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState(null);
   const [showAlert, setShowAlert] = useState(false);
-  const [alertMessage, setAlertMessage] = useState('');
-  const [classMessage, setClassMessage] = useState('');
+  const [alertMessage, setAlertMessage] = useState("");
+  const [classMessage, setClassMessage] = useState("");
 
   const fetchActivities = async () => {
     try {
-
       const response = await getActividades();
 
       if (response.codigo === 200) {
@@ -47,9 +50,7 @@ const RegistroActividad = ({ onToggleModal }) => {
     setSelectedOption(event.target.value);
   };
 
-
   const _onHandleClick = async () => {
-
     const fechaIngresada = fechaRef.current.value;
     const fechaActual = new Date().toISOString().split("T")[0];
 
@@ -72,18 +73,20 @@ const RegistroActividad = ({ onToggleModal }) => {
       );
 
       if (respuesta.codigo !== 200) {
-        throw new Error("Error al registrar actividad");
+        setAlertMessage("Error");
+        setClassMessage("danger");
       }
 
-      const responseRegistros = await getRegistros(userData.id, userData.apiKey);
+      const responseRegistros = await getRegistros(
+        userData.id,
+        userData.apiKey
+      );
 
-      dispatch(setRegistros(responseRegistros.registros));// Agrego la nueva lista de registros al slice
+      dispatch(setRegistros(responseRegistros.registros)); // Agrego la nueva lista de registros al slice
 
       setAlertMessage("Actividad registrada con éxito");
       setClassMessage("success");
-
     } catch (error) {
-      console.log(error);
       setAlertMessage("Error al registrar actividad");
       setClassMessage("danger");
     }
@@ -93,17 +96,19 @@ const RegistroActividad = ({ onToggleModal }) => {
     <div className="container">
       <h2>Registrar actividad</h2>
       <form>
-        {showAlert && <Alert classColor={classMessage} message={alertMessage} />}
+        {showAlert && (
+          <Alert classColor={classMessage} message={alertMessage} />
+        )}
         <div className="form-group">
           <label htmlFor="actividad">Actividad</label>
           <select
             id="actividad"
             ref={actividadRef}
             onChange={handleSelectChange}
-            className='form-control'
+            className="form-control"
           >
             <option value="">Selecciona una actividad</option>
-            {options.map(option => (
+            {options.map((option) => (
               <option key={option.id} value={option.id}>
                 {option.nombre}
               </option>
@@ -112,11 +117,21 @@ const RegistroActividad = ({ onToggleModal }) => {
         </div>
         <div className="form-group">
           <label htmlFor="duracion">Duración (minutos)</label>
-          <input type="number" id="duracion" ref={duracionRef} className="form-control" />
+          <input
+            type="number"
+            id="duracion"
+            ref={duracionRef}
+            className="form-control"
+          />
         </div>
         <div className="form-group">
           <label htmlFor="fecha">Fecha</label>
-          <input type="date" id="fecha" ref={fechaRef} className="form-control" />
+          <input
+            type="date"
+            id="fecha"
+            ref={fechaRef}
+            className="form-control"
+          />
         </div>
         <Button
           type="button"

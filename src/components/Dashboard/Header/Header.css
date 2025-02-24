@@ -1,23 +1,23 @@
 .header {
   background-color: #f8bbd0;
-  padding: 1rem 0; /* Elimina padding horizontal para evitar desbordes */
+  padding: 1rem 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   margin-bottom: 20px;
   width: 100%;
-  position: fixed; /* Cambia a fixed para que el header se mantenga en la parte superior */
+  position: fixed;
   top: 0;
   left: 0;
-  z-index: 1000; /* Asegura que el header esté por encima del contenido */
+  z-index: 1000;
 }
 
 .header-container {
   width: 100%;
-  max-width: 1200px; /* Limita el ancho máximo */
-  margin: 0 auto; /* Centra el contenido */
+  max-width: 1200px;
+  margin: 0 auto;
   display: flex;
   align-items: center;
-  justify-content: space-between; /* Separa título y botón */
-  padding: 0 2rem; /* Añade espacio interno sin romper el diseño */
+  justify-content: space-between;
+  padding: 0 2rem;
 }
 
 .header h1 {

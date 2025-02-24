@@ -1,9 +1,9 @@
 .activity-list-container {
     display: flex;
-    flex-direction: column; /* Asegura que los elementos se apilen en columna */
-    align-items: center; /* Centra el contenido */
+    flex-direction: column; 
+    align-items: center; 
     width: 100%;
-    max-width: 900px; /* Ajusta según el diseño */
+    max-width: 900px; 
     margin: 0 auto;
     padding: 1rem;
 }
@@ -12,23 +12,23 @@
 .filter-wrapper {
     width: 100%;
     display: flex;
-    justify-content: center; /* Centra los botones */
-    margin-bottom: 20px; /* Agrega espacio entre los filtros y la tabla */
+    justify-content: center; 
+    margin-bottom: 20px; 
 }
 
-/* Header con botón alineado a la derecha */
+
 .activity-header {
     display: flex;
     justify-content: flex-end;
     margin-bottom: 1rem;
 }
 
-/* Tarjeta que contiene la tabla */
+
 .activity-card {
     width: 100%;
 }
 
-/* Botón "Registrar Actividad" */
+
 .btn-success {
     background-color: #e91e63;
     border: none;
@@ -43,7 +43,7 @@
     background-color: #c2185b;
 }
 
-/* Tarjeta */
+
 .card {
     border: none;
     border-radius: 12px;
@@ -51,12 +51,12 @@
     background-color: #fff;
 }
 
-/* Cuerpo de la tarjeta */
+
 .card-body {
-    padding: 2rem; /* Espaciado más amplio */
+    padding: 2rem; 
 }
 
-/* Tabla */
+
 .table {
     width: 100%;
     border-collapse: collapse;
@@ -64,7 +64,7 @@
 
 .table-container {
     width: 100%;
-    overflow-x: auto; /* Para manejar tablas anchas en pantallas pequeñas */
+    overflow-x: auto; 
 }
 
 .table th, .table td {
@@ -83,7 +83,7 @@
     background-color: #fce4ec;
 }
 
-/* Botones en la tabla */
+
 .table .btn {
     background-color: #e91e63;
     border: none;
@@ -100,7 +100,7 @@
 
 .filter-container {
     display: flex;
-    justify-content: center; /* Centra los filtros */
+    justify-content: center; 
     gap: 10px;
     margin-bottom: 15px;
 }
@@ -111,7 +111,7 @@
     background-color: #f8a2c2;
     color: white;
     cursor: pointer;
-    border-radius: 20px; /* Bordes más redondeados */
+    border-radius: 20px; 
     font-size: 14px;
     font-weight: bold;
     transition: background-color 0.3s ease;

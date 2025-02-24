@@ -20,13 +20,14 @@
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Unificar los estilos de los cuadros */
+
 .stats-default, .stats-info, .progress-container {
   border-radius: 12px;
   padding: 1rem;
   text-align: center;
   width: 200px;
   margin: 0 auto;
+  margin-bottom: 30px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

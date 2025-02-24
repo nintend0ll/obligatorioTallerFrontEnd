@@ -6,13 +6,12 @@ import { setRegistros } from "../../app/slices/userSlice.js";
 import Main from "./Main/Main.jsx";
 import madoka from "../../assets/madoka.gif";
 
-
 const Dashboard = () => {
   const userData = useSelector((state) => state.userSlice.userData);
   const dispatch = useDispatch();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [extraLoading, setExtraLoading] = useState(true); 
+  const [extraLoading, setExtraLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -38,9 +37,9 @@ const Dashboard = () => {
     // simulamos tiempo extra para apreciar el gif de Madoka Magica
     const timer = setTimeout(() => {
       setExtraLoading(false);
-    }, 4000); // Cambia el tiempo si lo deseas
+    }, 3500); 
 
-    return () => clearTimeout(timer); 
+    return () => clearTimeout(timer);
   }, [userData, dispatch]);
 
   if (loading || extraLoading) {

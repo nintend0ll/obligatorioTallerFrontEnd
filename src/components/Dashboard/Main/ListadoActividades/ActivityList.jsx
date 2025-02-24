@@ -1,11 +1,11 @@
 import { useState } from 'react';
 import Button from "../../../UI/Button/Button";
 import ActivityTable from "./ActivityTable/ActivityTable";
-import RegistroActividad from "../RegistroActividades/RegistroActividad"; // Import RegistroActividad
+import RegistroActividad from "../RegistroActividades/RegistroActividad"; 
 import "./ActivityList.css";
 
 const ActivityList = ({onToggleModal}) => {
-    const [showRegistro, setShowRegistro] = useState(false); // Estado para controlar la visibilidad
+    const [showRegistro, setShowRegistro] = useState(false); 
 
     const toggleRegistro = () => {
         setShowRegistro(!showRegistro);
@@ -32,7 +32,7 @@ const ActivityList = ({onToggleModal}) => {
                 </div>
             </div>
 
-            {showRegistro && ( // Renderizar condicionalmente el formulario
+            {showRegistro && ( 
                 <div className="registro-actividad-container">
                     <RegistroActividad onToggleModal={toggleRegistro} />
                 </div>

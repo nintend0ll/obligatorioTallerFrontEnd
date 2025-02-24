@@ -1,6 +1,6 @@
-/* Estilo general del contenedor */
+
 .container {
-    max-width: 400px;
+    max-width: 1200px;
     margin: 20px auto;
     background: #fff;
     padding: 20px;
@@ -9,13 +9,12 @@
     text-align: center;
 }
 
-/* Estilo del título */
 h2 {
     color: #e91e63;
     margin-bottom: 15px;
 }
 
-/* Estilos para los grupos de formulario */
+
 .form-group {
     margin-bottom: 15px;
     text-align: left;
@@ -26,7 +25,7 @@ h2 {
     color: #333;
 }
 
-/* Estilos para los inputs y select */
+
 .form-control {
     width: 100%;
     padding: 10px;
@@ -42,7 +41,7 @@ h2 {
     box-shadow: 0 0 5px rgba(233, 30, 99, 0.5);
 }
 
-/* Botón de registrar actividad */
+
 .btn-primary {
     background: #e91e63;
     color: white;

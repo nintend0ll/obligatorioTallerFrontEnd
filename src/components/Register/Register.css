@@ -1,8 +1,8 @@
-/* Estilos generales */
+
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-color: #f9e4e4; /* Fondo rosado claro */
+    background-color: #f9e4e4; 
     display: grid;
     justify-content: center;
     align-items: center;
@@ -10,7 +10,7 @@ body {
   }
   
   .container {
-    background-color: #ffffff; /* Fondo blanco para el contenedor */
+    background-color: #ffffff; 
     padding: 2rem;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -20,11 +20,11 @@ body {
   }
   
   h2 {
-    color: #e91e63; /* Tono rosado oscuro para el título */
+    color: #e91e63; 
     margin-bottom: 1.5rem;
   }
   
-  /* Estilos para los grupos de formulario */
+  
   .form-group {
     margin-bottom: 1.5rem;
     text-align: left;
@@ -33,17 +33,17 @@ body {
   .form-group label {
     display: block;
     margin-bottom: 0.5rem;
-    color: #e91e63; /* Tono rosado oscuro para las etiquetas */
+    color: #e91e63; 
     font-weight: bold;
   }
   
-  /* Estilos para los inputs y select */
+ 
   .from-control,
   .password,
   .pais {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #e91e63; /* Borde rosado */
+    border: 1px solid #e91e63; 
     border-radius: 5px;
     font-size: 1rem;
     outline: none;
@@ -53,18 +53,18 @@ body {
   .from-control:focus,
   .password:focus,
   .pais:focus {
-    border-color: #c2185b; /* Tono rosado más oscuro al enfocar */
+    border-color: #c2185b; 
   }
   
   .pais {
-    appearance: none; /* Elimina el estilo por defecto del select */
+    appearance: none; 
     background-color: white;
     cursor: pointer;
   }
   
-  /* Estilos para el botón */
+ 
   .btn-primary {
-    background-color: #e91e63; /* Tono rosado oscuro para el botón */
+    background-color: #e91e63; 
     border: none;
     padding: 0.75rem;
     font-size: 1rem;
@@ -76,22 +76,21 @@ body {
   }
   
   .btn-primary:hover {
-    background-color: #c2185b; /* Tono rosado más oscuro al pasar el mouse */
+    background-color: #c2185b; 
   }
   
   .btn-primary:disabled {
-    background-color: #f8bbd0; /* Tono rosado claro cuando está deshabilitado */
+    background-color: #f8bbd0; 
     cursor: not-allowed;
   }
   
-  /* Estilos para el enlace de inicio de sesión */
   .registro-link {
     margin-top: 1rem;
-    color: #e91e63; /* Tono rosado oscuro para el texto */
+    color: #e91e63; 
   }
   
   .registro-link a {
-    color: #c2185b; /* Tono rosado más oscuro para el enlace */
+    color: #c2185b; 
     text-decoration: none;
     font-weight: bold;
   }

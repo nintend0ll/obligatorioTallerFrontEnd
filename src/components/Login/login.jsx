@@ -1,7 +1,7 @@
-import { Link } from 'react-router-dom'; // Importa Link
-import { useEffect, useRef, useState } from 'react'; // Importa useEffect, useRef, useState
-import './Login.css'; // Ensure case matches
-import { useNavigate } from 'react-router-dom'; // Importa useNavigate
+import { Link } from 'react-router-dom'; 
+import { useEffect, useRef, useState } from 'react'; 
+import './Login.css'; 
+import { useNavigate } from 'react-router-dom'; 
 import { login } from "../../services/api";
 import Alert from "../UI/Alert/Alert";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,19 +15,19 @@ const Login = () => {
 
   const inputUsernameRef = useRef();
   const inputPasswordRef = useRef();
-  const navigateTo = useNavigate(); // Utiliza useNavigate para navegar entre rutas
+  const navigateTo = useNavigate(); 
 
-  const [btnDisabled, setBtnDisabled] = useState(true); // Estado para el botón de login
-  const [btnText, setBtnText] = useState('Login'); // Estado para el texto del botón de login
-  const [showAlert, setShowAlert] = useState(false); // Estado para mostrar un mensaje de alerta
-  const [alertMessage, setAlertMessage] = useState(''); // Estado para el mensaje de alerta
-  const [classMessage, setClassMessage] = useState(''); // Estado para la clase del mensaje de alerta
+  const [btnDisabled, setBtnDisabled] = useState(true); 
+  const [btnText, setBtnText] = useState('Login'); 
+  const [showAlert, setShowAlert] = useState(false); 
+  const [alertMessage, setAlertMessage] = useState(''); 
+  const [classMessage, setClassMessage] = useState(''); 
 
   useEffect(() => {
     if (userData != null) {
       navigateTo('/dashboard');
     }
-  }, [userData, navigateTo]); // Add navigateTo as dependency
+  }, [userData, navigateTo]); 
 
   const _onHandleClick = async () => {
     try {
@@ -114,7 +114,7 @@ const Login = () => {
           </button>
 
         </form>
-        {/* Enlace para mostrar el registro */}
+        {}
         <div className="registro-link">
           <p>¿No tienes una cuenta?
             <Link to="/Register" id="mostrarRegistro"> Regístrate aquí</Link></p>

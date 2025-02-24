@@ -5,7 +5,7 @@ import { onLogout } from "../../../app/slices/userSlice";
 
 const Header = () => {
   const dispatcher = useDispatch();
-  
+
   return (
     <header className="header">
       <div className="header-container">
