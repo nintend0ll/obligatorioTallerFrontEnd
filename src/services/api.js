@@ -138,8 +138,7 @@ const saveRegistro = async (idActividad, iduser, tiempo, fecha) => {
     }
 };
 
-const deleteActivity =async (idRegistro)=>{
-    console.log("entro al delete de la actividad: "+ idRegistro)
+const deleteActivity = async (idRegistro)=>{
     try{
         const response = await fetch(`${BASE_URL}/registros.php?idRegistro=${idRegistro}`,{
             method:"DELETE" ,

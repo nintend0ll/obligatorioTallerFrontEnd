@@ -19,14 +19,11 @@ export const userSlice = createSlice({
     setRegistros: (state, action) => {
       state.registros = action.payload; 
     },
-    onDeleteActivity: (state, action) => {
-      state.registros = state.registros.filter((a) => a.id !== action.payload); 
-    },
     setActivities: (state, action) => {
       state.activities = action.payload; 
     },
   },
 });
-export const { onLogin, onLogout, setRegistros, setActivities, onDeleteActivity } =
+export const { onLogin, onLogout, setRegistros, setActivities, } =
   userSlice.actions;
 export default userSlice.reducer;
