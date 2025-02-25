@@ -61,6 +61,13 @@ const RegistroActividad = ({ onToggleModal }) => {
       return;
     }
 
+    if (duracionRef.current.value <= 0) {
+      setShowAlert(true);
+      setAlertMessage("La duración debe ser mayor a 0.");
+      setClassMessage("danger");
+      return;
+    }
+
     try {
       const userData = getUserDataFromLocalStorage();
       if (!userData) return;
